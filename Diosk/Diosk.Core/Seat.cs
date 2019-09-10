@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diosk
+namespace Diosk.Core
 {
     class Table
     {
+        public string Id { get; set; }
+
+        public string Orders { get; set; }
     }
 }

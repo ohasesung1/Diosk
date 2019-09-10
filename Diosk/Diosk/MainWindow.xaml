@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Diosk" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Border Background="Red" Height="8" VerticalAlignment="Top"></Border>
+            <Image Source="Image/logo.png" Stretch="Uniform"></Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Image Source="Image/bg_menu.png" Stretch="Uniform"></Image>
+        </Grid>
+        <Grid Grid.Row="1" Margin="80,0,80,-25" VerticalAlignment="Bottom">
+            <Border Background="WhiteSmoke" Height="50" BorderBrush="Gray" BorderThickness="2">
+                <TextBlock FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="24"
+                           Foreground="Gray">
+                    <Run Text="All |"></Run>
+                    <Run Text="버거메뉴 | 음료류 | 사이드메뉴"></Run>
+                </TextBlock>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

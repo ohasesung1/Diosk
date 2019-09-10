@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MenuData.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="TotalWindow.xaml.cs">
       <DependentUpon>TotalWindow.xaml</DependentUpon>
@@ -108,6 +109,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diosk.Core\Diosk.Core.csproj">
+      <Project>{41b686f3-b544-411c-adb8-20241ad94a2f}</Project>
+      <Name>Diosk.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\b1.jpg" />
+    <Resource Include="Image\b2.jpg" />
+    <Resource Include="Image\b3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\bg_menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
