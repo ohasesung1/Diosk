@@ -31,5 +31,8 @@
                 </TextBlock>
             </Border>
         </Grid>
+        <Grid Grid.Row="2">
+            <ListView x:Name="lvFood"></ListView>
+        </Grid>
     </Grid>
 </Window>

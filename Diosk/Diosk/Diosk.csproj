@@ -55,11 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MenuData.cs" />
-    <Compile Include="Table.cs" />
+    <Compile Include="FoodCtrl.xaml.cs">
+      <DependentUpon>FoodCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FoodDataSource.cs" />
     <Compile Include="TotalWindow.xaml.cs">
       <DependentUpon>TotalWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="FoodCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,12 +117,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Diosk.Core\Diosk.Core.csproj">
-      <Project>{41b686f3-b544-411c-adb8-20241ad94a2f}</Project>
-      <Name>Diosk.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\bg_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diosk.Core\Diosk.Core.csproj">
+      <Project>{41b686f3-b544-411c-adb8-20241ad94a2f}</Project>
+      <Name>Diosk.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

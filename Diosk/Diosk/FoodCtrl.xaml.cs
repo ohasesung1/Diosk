@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Diosk.Core;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,28 +17,32 @@ using System.Windows.Shapes;
 namespace Diosk
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// Interaction logic for FoodCtrl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FoodCtrl : UserControl
     {
-        public MainWindow()
+        Food food = new Food();
+
+        public FoodCtrl()
         {
             InitializeComponent();
-            this.Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        public void SetItem(string name, string price)
         {
-            Debug.WriteLine("load MainWindow");
 
-            App.FoodData.load();
         }
 
-        private void LoadMenu()
+        public void SetItem(Food item)
         {
-            FoodCtrl foodCtrl = new FoodCtrl();
+            food = item;
+        }
 
-            lvFood.Items.Add(foodCtrl);
+        private void UpdateItem()
+        {
+            tbName.Text = food.Name;
+            tbPrice.Text = food.Price.ToString();
+            tbCount.Text = food.Count.ToString();
         }
     }
 }

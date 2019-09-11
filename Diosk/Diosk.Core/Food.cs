@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diosk.Core
 {
-    public class Menu
+    public class Food
     {
         public string Name { get; set; }
 
@@ -18,12 +18,12 @@ namespace Diosk.Core
 
         public eCategory Category { get; set; }
 
-        public Menu()
+        public Food()
         {
 
         }
 
-        public Menu(String name, int price, int count, String imagePath, eCategory category)
+        public Food(String name, int price, int count, String imagePath, eCategory category)
         {
             this.Name = name;
             this.Price = price;

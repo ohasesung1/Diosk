@@ -13,5 +13,7 @@ namespace Diosk
     /// </summary>
     public partial class App : Application
     {
+        public static FoodDataSource FoodData = new FoodDataSource();
     }
 }
+
