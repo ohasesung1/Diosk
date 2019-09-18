@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diosk.Core
 {
-    class Table
+    class Seat
     {
         public string Id { get; set; }
 
