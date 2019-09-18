@@ -117,9 +117,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\b1.jpg" />
     <Resource Include="Image\b2.jpg" />
     <Resource Include="Image\b3.jpg" />
@@ -132,6 +129,9 @@
       <Project>{41b686f3-b544-411c-adb8-20241ad94a2f}</Project>
       <Name>Diosk.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

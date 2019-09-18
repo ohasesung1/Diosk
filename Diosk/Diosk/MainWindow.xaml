@@ -5,34 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
-        Title="Diosk" Height="450" Width="800">
+        Title="Diosk" Height="800" Width="450">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="600"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Border Background="Red" Height="8" VerticalAlignment="Top"></Border>
-            <Image Source="Image/logo.png" Stretch="Uniform"></Image>
+            <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
+            <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
         </Grid>
-        <Grid Grid.Row="1">
-            <Image Source="Image/bg_menu.png" Stretch="Uniform"></Image>
-        </Grid>
-        <Grid Grid.Row="1" Margin="80,0,80,-25" VerticalAlignment="Bottom">
-            <Border Background="WhiteSmoke" Height="50" BorderBrush="Gray" BorderThickness="2">
-                <TextBlock FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="24"
-                           Foreground="Gray">
-                    <Run Text="All |"></Run>
-                    <Run Text="버거메뉴 | 음료류 | 사이드메뉴"></Run>
-                </TextBlock>
-            </Border>
+        <Grid Grid.Row="1" Background="#fefce7">
+            
         </Grid>
         <Grid Grid.Row="2">
-            <ListView x:Name="lvFood"></ListView>
+            <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
+            <Label x:Name="clock" Content="clock" FontSize="24" Margin="20,20,0,0"/>
+            <Button x:Name="Statistic" Width="150" Height="60" Content="통계" FontSize="30" Background="#F12243" Foreground="White" Margin="230,0,0,0" BorderThickness="0" Click="Statistic_Click"/>
         </Grid>
     </Grid>
 </Window>
