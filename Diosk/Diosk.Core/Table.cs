@@ -15,5 +15,7 @@ namespace Diosk.Core
         public Payment Payment { get; set; }
 
         public int TotalPrice { get; set; }
+
+        public DateTime Time { get; set; }  //최근 주문시간
     }
 }
