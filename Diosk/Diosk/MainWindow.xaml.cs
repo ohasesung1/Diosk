@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diosk.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -32,13 +33,36 @@ namespace Diosk
             Debug.WriteLine("load MainWindow");
 
             App.FoodData.load();
+            lvFood.ItemsSource = App.FoodData.lstFood;
+            //LoadMenu();
         }
 
-        private void LoadMenu()
+
+        private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            FoodCtrl foodCtrl = new FoodCtrl();
-
-            lvFood.Items.Add(foodCtrl);
+            Food food = (lvFood.SelectedItem as Food);
+            if (food == null) return;
+            food.Count++;
+            lvFood.Items.Refresh();
         }
+
+        private void BtnMinus_Click(object sender, RoutedEventArgs e)
+        {
+            Food food = (lvFood.SelectedItem as Food);
+            if (food == null) return;
+            food.Count--;
+            lvFood.Items.Refresh();
+        }
+
+        //private void LoadMenu()
+        //{
+        //    foreach(Food food in App.FoodData.lstFood)
+        //    {
+        //        FoodCtrl foodCtrl = new FoodCtrl();
+        //        foodCtrl.SetItem(food);
+
+        //        lvFood.Items.Add(foodCtrl);
+        //    }
+        //}
     }
 }

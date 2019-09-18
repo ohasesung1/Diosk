@@ -5,10 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Diosk"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock x:Name="tbName"></TextBlock>
-        <TextBlock x:Name="tbCount"></TextBlock>
-        <TextBlock x:Name="tbPrice"></TextBlock>
-    </StackPanel>
+             d:DesignHeight="450" d:DesignWidth="800" Padding="50px, 0, 50px, 0">
+    <UserControl.Resources>
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+        <Style x:Key="subStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Width="200" Height="250">
+        <StackPanel>
+            <Image x:Name="FoodImage" Stretch="UniformToFill"></Image>
+            <TextBlock x:Name="tbName" Style="{StaticResource TitleStyle}"></TextBlock>
+            <TextBlock x:Name="tbCount" Style="{StaticResource subStyle}"></TextBlock>
+            <TextBlock x:Name="tbPrice" Style="{StaticResource subStyle}"></TextBlock>
+        </StackPanel>
+    </Grid>
 </UserControl>
