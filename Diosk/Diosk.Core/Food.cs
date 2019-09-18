@@ -12,7 +12,25 @@ namespace Diosk.Core
 
         public int Price { get; set; }
 
-        public int Count { get; set; }
+        private int count;
+        public int Count {
+
+            get
+            {
+                return count;
+            }
+
+            set
+            {
+                count = value;
+                if(count < 0)
+                {
+                    count = 0;
+                }
+            }
+
+        }
+        
 
         public string ImagePath { get; set; }
 

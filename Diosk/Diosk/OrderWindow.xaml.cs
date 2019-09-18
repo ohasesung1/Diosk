@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Diosk.Core;
 
 namespace Diosk
 {
@@ -27,10 +28,10 @@ namespace Diosk
         public void AddOrderCount(object sender, RoutedEventArgs e)
         {
             Button addBtn = (Button)sender;
-            if (addBtn.DataContext is Core.Menu)
+            if (addBtn.DataContext is Food)
             {
-                Core.Menu menu = (Core.Menu)addBtn.DataContext;
-                menu.Count += 1;
+                Food food = (Food)addBtn.DataContext;
+                food.Count += 1;
             }
 
             lvOrder.Items.Refresh();
@@ -38,10 +39,10 @@ namespace Diosk
         public void SubtractOrderCount(object sender, RoutedEventArgs e)
         {
             Button subBtn = (Button)sender;
-            if (subBtn.DataContext is Core.Menu)
+            if (subBtn.DataContext is Food)
             {
-                Core.Menu menu = (Core.Menu)subBtn.DataContext;
-                menu.Count -= 1;
+                Food food = (Food)subBtn.DataContext;
+                food.Count -= 1;
             }
 
             lvOrder.Items.Refresh();
@@ -49,35 +50,39 @@ namespace Diosk
 
         public void AddOrderMenu(object sender, RoutedEventArgs e)
         {
-            Core.Menu menu = (lvMenu.SelectedItem as Core.Menu);
+            Food food = (lvMenu.SelectedItem as Food);
 
-            if (menu == null) return;
+            if (food == null) return;
 
-            if (lvOrder.Items.Contains(menu)) return;
+            if (lvOrder.Items.Contains(food))
+            {
 
-            lvOrder.Items.Add(menu);
+                return;
+            }
+
+            lvOrder.Items.Add(food);
 
             lvOrder.Items.Refresh();
         }
 
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            App.MenuData.Load();
+            App.FoodData.load();
 #if true
-            lvMenu.ItemsSource = App.MenuData.lstMenu;
+            lvMenu.ItemsSource = App.FoodData.lstFood;
 #else
             LoadMenu();
 #endif
         }
 
-        //private void LoadMenu()
-        //{
-        //    foreach(Core.Menu menu in App.MenuData.lstMenu)
-        //    {
-        //        MenuCtrl menuCtrl = new MenuCtrl();
-        //        menuCtrl.SetItem(menu);
-        //        lvMenu.Items.Add(menuCtrl);
-        //    } 
-        //}
+        private void LoadMenu()
+        {
+            foreach (Food food in App.FoodData.lstFood)
+            {
+                FoodCtrl foodCtrl = new FoodCtrl();
+                foodCtrl.SetItem(food);
+                lvMenu.Items.Add(foodCtrl);
+            }
+        }
     }
 }
