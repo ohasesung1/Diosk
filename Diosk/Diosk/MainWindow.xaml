@@ -6,39 +6,19 @@
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
         Title="Diosk" Height="450" Width="800">
-    
-    <Window.Resources>
-        <Style x:Key="TitleStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="24"></Setter>
-            <Setter Property="FontWeight" Value="Bold"></Setter>
-            <Setter Property="TextAlignment" Value="Center"></Setter>
-        </Style>
-        <Style x:Key="subStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property="TextAlignment" Value="Center"></Setter>
-        </Style>
-    </Window.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid Grid.Row="0">
             <Border Background="Red" Height="8" VerticalAlignment="Top"></Border>
             <Image Source="Image/logo.png" Stretch="Uniform"></Image>
-            <StackPanel Width="100" HorizontalAlignment="Left">
-                <Button x:Name="btnPlus" Click="BtnPlus_Click" Content="추가"></Button>
-                <Button x:Name="btnMinus" Click="BtnMinus_Click" Content="삭제"></Button>
-            </StackPanel>
         </Grid>
-
         <Grid Grid.Row="1">
             <Image Source="Image/bg_menu.png" Stretch="Uniform"></Image>
         </Grid>
-
         <Grid Grid.Row="1" Margin="80,0,80,-25" VerticalAlignment="Bottom">
             <Border Background="WhiteSmoke" Height="50" BorderBrush="Gray" BorderThickness="2">
                 <TextBlock FontWeight="Bold"
@@ -51,27 +31,8 @@
                 </TextBlock>
             </Border>
         </Grid>
-
         <Grid Grid.Row="2">
-            <ListView x:Name="lvFood" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Width="200" Height="250">
-                            <Image Source="{Binding ImagePath}" Stretch="UniformToFill"></Image>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}" Style="{StaticResource TitleStyle}"></TextBlock>
-                                <TextBlock Text="{Binding Count}" Style="{StaticResource subStyle}"></TextBlock>
-                                <TextBlock Text="{Binding Price}" Style="{StaticResource subStyle}"></TextBlock>
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView x:Name="lvFood"></ListView>
         </Grid>
     </Grid>
 </Window>
