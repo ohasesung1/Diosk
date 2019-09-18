@@ -53,14 +53,15 @@ namespace Diosk
             Food food = (lvMenu.SelectedItem as Food);
 
             if (food == null) return;
-
-            if (lvOrder.Items.Contains(food))
+            else if (lvOrder.Items.Contains(food))
             {
-
-                return;
+                food = (lvOrder.Items.GetItemAt(lvOrder.Items.IndexOf(food)) as Food);
+                food.Count++;
             }
-
-            lvOrder.Items.Add(food);
+            else
+            {
+                lvOrder.Items.Add(food);
+            }
 
             lvOrder.Items.Refresh();
         }
