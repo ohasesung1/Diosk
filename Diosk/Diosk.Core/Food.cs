@@ -14,12 +14,10 @@ namespace Diosk.Core
 
         private int count;
         public int Count {
-
             get
             {
                 return count;
             }
-
             set
             {
                 count = value;
@@ -28,10 +26,8 @@ namespace Diosk.Core
                     count = 0;
                 }
             }
-
         }
         
-
         public string ImagePath { get; set; }
 
         public eCategory Category { get; set; }
