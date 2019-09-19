@@ -36,6 +36,7 @@ namespace Diosk
         public void SetItem(Food item)
         {
             food = item;
+            UpdateItem();
         }
 
         private void UpdateItem()
