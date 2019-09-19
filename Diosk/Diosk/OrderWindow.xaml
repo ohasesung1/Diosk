@@ -5,23 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
-        Height="800" Width="450"
-        d:DesignHeight="800" d:DesignWidth="450">
+        Height="700" Width="450">
     <UserControl.Resources>
         <Style x:Key="TitleStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
+        <Style x:Key="ListViewHeader" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed"></Setter>
+        </Style>
     </UserControl.Resources>
-    <Grid Background="White" Height="800" Width="450">
+    <Grid Background="White" Height="700" Width="450">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="450"/>
+            <RowDefinition Height="400"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1">
-            <ListView x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid Grid.Row="0">
+            <ListView BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,10,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" ItemHeight="100" ItemWidth="140"></WrapPanel>
@@ -42,13 +43,13 @@
             </ListView>
         </Grid>
         
-        <Grid Grid.Row="2">
-            <ListView x:Name="lvOrder" Height="230" Width="250" HorizontalAlignment="Left" VerticalAlignment="top" Margin="10,10,0,0">
+        <Grid Grid.Row="1">
+            <ListView BorderBrush="#F12243" x:Name="lvOrder" Height="230" Width="250" HorizontalAlignment="Left" VerticalAlignment="top" Margin="10,10,0,0">
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Name" Width="130" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource ListViewHeader}">
+                        <GridViewColumn Width="130" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
 
-                        <GridViewColumn Header="" Width="40">
+                        <GridViewColumn Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="20" Height="20" Content="-" Click="SubtractOrderCount"></Button>
@@ -56,9 +57,9 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Count" Width="40" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                        <GridViewColumn Width="40" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
 
-                        <GridViewColumn Header="" Width="40">
+                        <GridViewColumn Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="20" Height="20" Content="+" Click="AddOrderCount"></Button>
@@ -68,9 +69,10 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Border BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="250" Margin="10,10,0,0">
-                <TextBlock Text="총계 : " FontSize="25" VerticalAlignment="Center"></TextBlock>
+            <Border BorderThickness="1" BorderBrush="#F12243" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="250" Margin="10,0,0,10">
+                <TextBlock x:Name="totalPrice" Text="총계 : " FontSize="25" VerticalAlignment="Center"></TextBlock>
             </Border>
+            <Button x:Name="PaymentBtn" Content="결제" Height="50" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"></Button>
         </Grid>
         
     </Grid>
