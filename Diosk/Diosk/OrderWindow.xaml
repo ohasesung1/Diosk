@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
-        Height="700" Width="450">
+        Height="720" Width="435">
     <UserControl.Resources>
         <Style x:Key="TitleStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="15"></Setter>
@@ -14,18 +14,23 @@
         <Style x:Key="ListViewHeader" TargetType="{x:Type GridViewColumnHeader}">
             <Setter Property="Visibility" Value="Collapsed"></Setter>
         </Style>
+        <Style x:Key="doubleClick" TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="AddOrderMenu"></EventSetter>
+        </Style>
     </UserControl.Resources>
-    <Grid Background="White" Height="700" Width="450">
+    <Grid Background="White" Height="720" Width="435">
         <Grid.RowDefinitions>
             <RowDefinition Height="400"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <ListView BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,0,10,0">
+            <ListView ItemContainerStyle="{StaticResource doubleClick}" BorderThickness="1" BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10,10,10,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" ItemHeight="100" ItemWidth="140"></WrapPanel>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="100" ItemWidth="135"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
@@ -34,8 +39,7 @@
                             <Image Source="{Binding ImagePath}" Stretch="UniformToFill"></Image>
                             <StackPanel>
                                 <TextBlock Text="{Binding Name}" Style="{StaticResource TitleStyle}" TextTrimming="CharacterEllipsis"></TextBlock>
-                                <TextBlock Text="{Binding Price}" Style="{StaticResource TitleStyle}" ></TextBlock>
-                                <Button Click="AddOrderMenu"></Button>
+                                <TextBlock VerticalAlignment="Bottom" Text="{Binding Price}" Style="{StaticResource TitleStyle}" ></TextBlock>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
@@ -44,7 +48,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListView BorderBrush="#F12243" x:Name="lvOrder" Height="230" Width="250" HorizontalAlignment="Left" VerticalAlignment="top" Margin="10,10,0,0">
+            <ListView BorderBrush="#F12243" x:Name="lvOrder" Height="230" Width="250"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" VerticalAlignment="top" Margin="10,10,0,0">
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{StaticResource ListViewHeader}">
                         <GridViewColumn Width="130" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
@@ -69,10 +73,12 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Border BorderThickness="1" BorderBrush="#F12243" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="250" Margin="10,0,0,10">
+        </Grid>
+        <Grid Grid.Row="2">
+            <Border BorderThickness="1" BorderBrush="#F12243" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="250" Margin="10,0,0,0">
                 <TextBlock x:Name="totalPrice" Text="총계 : " FontSize="25" VerticalAlignment="Center"></TextBlock>
             </Border>
-            <Button x:Name="PaymentBtn" Content="결제" Height="50" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"></Button>
+            <Button x:Name="PaymentBtn" Content="결제" Height="50" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,0"></Button>
         </Grid>
     </Grid>
 </UserControl>
