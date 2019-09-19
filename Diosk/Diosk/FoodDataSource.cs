@@ -19,9 +19,9 @@ namespace Diosk
 
             lstFood = new List<Food>()
             {
-                new Food() { Name = "언빌리버블버거", Price = 1000, Count = 1, ImagePath = "Image/b1.jpg", Category = eCategory.Buger},
-                new Food() { Name = "인크레더블버거", Price = 1000, Count = 1, ImagePath = "Image/b2.jpg", Category = eCategory.Buger},
-                new Food() { Name = "마살라버거", Price = 1000, Count = 1, ImagePath = "Image/b3.jpg", Category = eCategory.Buger},
+                new Food() { Name = "언빌리버블버거", Price = 1000, Count = 1, ImagePath = "Image/b1.jpg", Category = eCategory.Burger},
+                new Food() { Name = "인크레더블버거", Price = 1000, Count = 1, ImagePath = "Image/b2.jpg", Category = eCategory.Burger},
+                new Food() { Name = "마살라버거", Price = 1000, Count = 1, ImagePath = "Image/b3.jpg", Category = eCategory.Burger},
             };
 
             isLoaded = true;

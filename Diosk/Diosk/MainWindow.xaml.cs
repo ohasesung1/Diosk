@@ -32,12 +32,19 @@ namespace Diosk
         {
             Debug.WriteLine("load MainWindow");
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(0.01);
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(0.01)
+            };
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            App.FoodData.load();
+            LoadTable();
+        }
+
+        private void LoadTable()
+        {
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -45,16 +52,10 @@ namespace Diosk
             clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
         }
 
-        private void LoadMenu()
-        {
-            FoodCtrl foodCtrl = new FoodCtrl();
-
-            //lvFood.Items.Add(foodCtrl);
-        }
-
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
             order.Visibility = Visibility.Visible;
+            total.Visibility = Visibility.Visible;
         }
     }
 }

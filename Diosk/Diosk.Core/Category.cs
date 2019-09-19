@@ -8,7 +8,7 @@ namespace Diosk.Core
 {
     public enum eCategory
     {
-        Buger,
+        Burger,
         Side,
         Drink,
     }

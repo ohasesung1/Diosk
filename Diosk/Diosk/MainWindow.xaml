@@ -16,8 +16,14 @@
             <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
             <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
         </Grid>
-        <Grid Grid.Row="1" Background="#fefce7">
-            
+        <Grid Grid.Row="1">
+            <ListView x:Name="tbList" Background="#fefce7">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="100" ItemWidth="100"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
         </Grid>
         <Grid Grid.Row="2">
             <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
@@ -26,6 +32,7 @@
         </Grid>
         <Grid Grid.Row="1" Grid.RowSpan="2">
             <local:OrderWindow x:Name="order" Visibility="Collapsed"/>
+            <local:TotalWindow x:Name="total" Visibility="Collapsed"></local:TotalWindow>
         </Grid>
     </Grid>
 </Window>
