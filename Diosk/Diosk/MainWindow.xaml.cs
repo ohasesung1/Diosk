@@ -38,6 +38,13 @@ namespace Diosk
             };
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+
+            LoadTable();
+        }
+
+        private void LoadTable()
+        {
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
