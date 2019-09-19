@@ -20,7 +20,7 @@
             <ListView x:Name="tbList" Background="#fefce7" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" ItemHeight="150" ItemWidth="150" Margin="30"></WrapPanel>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="150" ItemWidth="150" Margin="30"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
