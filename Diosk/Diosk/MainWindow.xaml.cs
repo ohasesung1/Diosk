@@ -54,7 +54,7 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            
+            order.Visibility = Visibility.Visible;
         }
     }
 }

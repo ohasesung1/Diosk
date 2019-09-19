@@ -25,7 +25,7 @@ namespace Diosk
             InitializeComponent();
             this.Loaded += OrderWindow_Loaded;
         }
-        public void AddOrderCount(object sender, RoutedEventArgs e)
+        private void AddOrderCount(object sender, RoutedEventArgs e)
         {
             Button addBtn = (Button)sender;
             if (addBtn.DataContext is Food)
@@ -36,19 +36,28 @@ namespace Diosk
 
             lvOrder.Items.Refresh();
         }
-        public void SubtractOrderCount(object sender, RoutedEventArgs e)
+        private void SubtractOrderCount(object sender, RoutedEventArgs e)
         {
             Button subBtn = (Button)sender;
             if (subBtn.DataContext is Food)
             {
                 Food food = (Food)subBtn.DataContext;
                 food.Count -= 1;
+                removeCheckFood(food);
             }
 
             lvOrder.Items.Refresh();
         }
 
-        public void AddOrderMenu(object sender, RoutedEventArgs e)
+        private void removeCheckFood(Food food)
+        {
+            if(food.Count <= 0)
+            {
+                lvOrder.Items.Remove(food);
+            }
+        }
+
+        private void AddOrderMenu(object sender, RoutedEventArgs e)
         {
             Food food = (lvMenu.SelectedItem as Food);
 
@@ -66,6 +75,12 @@ namespace Diosk
             lvOrder.Items.Refresh();
         }
 
+        private void SetTotalPrice(Core.Table table)
+        {
+            totalPrice.Text += " " + table.TotalPrice;
+        }
+
+
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
@@ -76,14 +91,14 @@ namespace Diosk
 #endif
         }
 
-        private void LoadMenu()
-        {
-            foreach (Food food in App.FoodData.lstFood)
-            {
-                FoodCtrl foodCtrl = new FoodCtrl();
-                foodCtrl.SetItem(food);
-                lvMenu.Items.Add(foodCtrl);
-            }
-        }
+        //private void LoadMenu()
+        //{
+        //    foreach (Food food in App.FoodData.lstFood)
+        //    {
+        //        FoodCtrl foodCtrl = new FoodCtrl();
+        //        foodCtrl.SetItem(food);
+        //        lvMenu.Items.Add(foodCtrl);
+        //    }
+        //}
     }
 }
