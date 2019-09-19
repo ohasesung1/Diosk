@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diosk.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -39,14 +39,19 @@ namespace Diosk
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            App.TableData.Load();
-            tbList.ItemsSource = App.TableData.lstTable;
             LoadTable();
         }
 
         private void LoadTable()
         {
+            App.TableData.Load();
+            foreach (Table table in App.TableData.lstTable)
+            {
+                TableCtrl tableCtrl = new TableCtrl();
+                tableCtrl.SetTable(table);
 
+                tbList.Items.Add(tableCtrl);
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -56,7 +61,7 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            order.Visibility = Visibility.Visible;
+            //order.Visibility = Visibility.Visible;
             total.Visibility = Visibility.Visible;
         }
     }

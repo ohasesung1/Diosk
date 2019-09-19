@@ -33,7 +33,7 @@ namespace Diosk
         public void UpdateItem()
         {
             tbId.Text = table.Id;
-            tbTime.Text = table.Time.ToString();
+            tbTime.Text = table.Time.ToString("hh : mm : ss");
         }
     }
 }
