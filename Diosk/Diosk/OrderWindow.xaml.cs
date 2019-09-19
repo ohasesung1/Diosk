@@ -59,10 +59,11 @@ namespace Diosk
 
         private void AddOrderMenu(object sender, RoutedEventArgs e)
         {
-            Food food = (lvMenu.SelectedItem as Food);
+            Food food = ((ListViewItem)sender).Content as Food;
 
             if (food == null) return;
-            else if (lvOrder.Items.Contains(food))
+
+            if (lvOrder.Items.Contains(food))
             {
                 food = (lvOrder.Items.GetItemAt(lvOrder.Items.IndexOf(food)) as Food);
                 food.Count++;
