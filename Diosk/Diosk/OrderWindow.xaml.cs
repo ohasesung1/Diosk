@@ -85,21 +85,20 @@ namespace Diosk
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
-#if true
-            lvMenu.ItemsSource = App.FoodData.lstFood;
-#else
+
             LoadMenu();
-#endif
+
         }
 
-        //private void LoadMenu()
-        //{
-        //    foreach (Food food in App.FoodData.lstFood)
-        //    {
-        //        FoodCtrl foodCtrl = new FoodCtrl();
-        //        foodCtrl.SetItem(food);
-        //        lvMenu.Items.Add(foodCtrl);
-        //    }
-        //}
+        private void LoadMenu()
+        {
+            App.FoodData.load();
+            foreach (Food food in App.FoodData.lstFood)
+            {
+                FoodCtrl foodCtrl = new FoodCtrl();
+                foodCtrl.SetItem(food);
+                lvMenu.Items.Add(foodCtrl);
+            }
+        }
     }
 }

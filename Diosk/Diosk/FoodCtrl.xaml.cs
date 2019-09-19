@@ -41,6 +41,7 @@ namespace Diosk
 
         private void UpdateItem()
         {
+            FoodImage.Source = new BitmapImage(new Uri(food.ImagePath, UriKind.Relative));
             tbName.Text = food.Name;
             tbPrice.Text = food.Price.ToString();
             tbCount.Text = food.Count.ToString();

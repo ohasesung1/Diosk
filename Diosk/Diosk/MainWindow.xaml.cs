@@ -26,6 +26,12 @@ namespace Diosk
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
+            tbList.MouseDoubleClick += tbClick;
+        }
+
+        private void tbClick(object sender, MouseButtonEventArgs e)
+        {
+            order.Visibility = Visibility.Visible;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -51,17 +57,19 @@ namespace Diosk
                 tableCtrl.SetTable(table);
 
                 tbList.Items.Add(tableCtrl);
+                
             }
         }
+
 
         private void timer_Tick(object sender, EventArgs e)
         {
             clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
         }
 
+
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            ////order.Visibility = Visibility.Visible;
             //total.Visibility = Visibility.Visible;
 
             PaymentWin paymentWin = new PaymentWin();
