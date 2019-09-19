@@ -14,6 +14,7 @@ namespace Diosk
     public partial class App : Application
     {
         public static FoodDataSource FoodData = new FoodDataSource();
+        public static TableDataSource TableData = new TableDataSource();
     }
 }
 

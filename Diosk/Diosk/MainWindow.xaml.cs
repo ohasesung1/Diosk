@@ -39,6 +39,8 @@ namespace Diosk
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
+            App.TableData.Load();
+            tbList.ItemsSource = App.TableData.lstTable;
             LoadTable();
         }
 

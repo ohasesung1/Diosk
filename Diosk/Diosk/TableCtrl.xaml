@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <WrapPanel>
+            <TextBlock x:Name="tbId"></TextBlock>
+            <TextBlock x:Name="tbTime"></TextBlock>
+            <TextBlock x:Name="tbList"></TextBlock>
+        </WrapPanel>
     </Grid>
 </UserControl>
