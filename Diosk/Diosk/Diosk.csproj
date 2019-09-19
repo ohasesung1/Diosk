@@ -59,6 +59,10 @@
       <DependentUpon>FoodCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="FoodDataSource.cs" />
+    <Compile Include="TableCtrl.xaml.cs">
+      <DependentUpon>TableCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableDataSource.cs" />
     <Compile Include="TotalWindow.xaml.cs">
       <DependentUpon>TotalWindow.xaml</DependentUpon>
     </Compile>
@@ -79,6 +83,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
