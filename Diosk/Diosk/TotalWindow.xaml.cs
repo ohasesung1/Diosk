@@ -24,5 +24,10 @@ namespace Diosk
         {
             InitializeComponent();
         }
+
+        //private void TotalList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+                
+        //}
     }
 }

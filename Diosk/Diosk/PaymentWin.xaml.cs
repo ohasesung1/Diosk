@@ -50,11 +50,12 @@ namespace Diosk
 
             if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + totalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
+
                 this.Close();
             }
             else
             {
-
+                this.Close();
             }
         }
 
