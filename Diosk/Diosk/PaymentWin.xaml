@@ -4,19 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diosk"
-        mc:Ignorable="d">
+        mc:Ignorable="d"
+        Width="500" Height="300">
     <Grid>
-        <!--<Grid Background="White">
+        <Grid Background="White" Width="500" Height="275">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="300"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width ="300"/>
-            </Grid.ColumnDefinitions>-->
-        <Grid>
-            <Button x:Name="Card" Height="150" Width="250" Click="Card_Click" Content="카드" Margin="68,177,442,177"></Button>
-            <Button x:Name="Cash" Height="150" Width="250" Click="Cash_Click" Content="현금" Margin="445,177,65,177"></Button>
+            <Grid Grid.Row="0">
+                <Button x:Name="Cash" Height="50" Width="100" Click="Cash_Click" HorizontalAlignment="Left" Content="현금" Margin="100, 0, 100, 0"></Button>
+                <Button x:Name="Card" Height="50" Width="100" Click="Card_Click" HorizontalAlignment="Right" Content="카드" Margin="100, 0, 100, 0"></Button>
+            </Grid>
         </Grid>
-        <!--</Grid>-->
     </Grid>
 </Window>

@@ -31,31 +31,32 @@ namespace Diosk
             Payment paymentWay;
             paymentWay = Payment.Card;
 
-            if (MessageBox.Show("결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-
-            }
-            else
-            {
-
-            }
+            PaymentTodo(paymentWay);
         }
 
         private void Cash_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
+            Payment paymentWay;
+            paymentWay = Payment.Cash;
 
+            PaymentTodo(paymentWay);
+        }
+
+        private void PaymentTodo(Payment paymentWay)
+        {
+            Core.Table table = new Core.Table();
+
+            int totalPrice = table.TotalPrice;
+
+            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + totalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+            {
+                this.Close();
             }
             else
             {
 
-            } 
+            }
         }
 
-        private void Payment_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

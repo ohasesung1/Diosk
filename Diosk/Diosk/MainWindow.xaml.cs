@@ -70,10 +70,7 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            //total.Visibility = Visibility.Visible;
-
-            PaymentWin paymentWin = new PaymentWin();
-            paymentWin.ShowDialog();
+    
         }
     }
 }

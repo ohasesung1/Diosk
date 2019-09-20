@@ -100,5 +100,11 @@ namespace Diosk
                 lvMenu.Items.Add(foodCtrl);
             }
         }
+
+        private void PaymentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentWin paymentWin = new PaymentWin();
+            paymentWin.ShowDialog();
+        }
     }
 }
