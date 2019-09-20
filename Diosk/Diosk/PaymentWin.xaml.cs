@@ -46,11 +46,12 @@ namespace Diosk
         {
             Core.Table table = new Core.Table();
 
-            int totalPrice = table.TotalPrice;
+            table.TotalPrice = 1000;
 
-            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + totalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
-
+                table.totalSales = table.totalSales + table.TotalPrice;
+                Debug.Write(table.totalSales);
                 this.Close();
             }
             else

@@ -23,11 +23,14 @@ namespace Diosk
         public TotalWindow()
         {
             InitializeComponent();
+
+            viewPrice();
         }
 
-        //private void TotalList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-                
-        //}
+        private void viewPrice()
+        {
+            Core.Table table = new Core.Table();
+            totalPrice.Text = table.totalSales.ToString() + "원";
+        }
     }
 }

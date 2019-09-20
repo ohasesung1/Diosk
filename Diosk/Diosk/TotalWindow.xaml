@@ -6,26 +6,42 @@
              xmlns:local="clr-namespace:Diosk"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="450">
+    <UserControl.Resources>
+        <Style x:Key="button_style" TargetType="Button">
+            <Setter Property="Background" Value="#F12243"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="Width" Value="90"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="600"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <ListView x:Name="totalList" Background="#fefce7">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="분류"></GridViewColumn>
-                        <GridViewColumn Header="수량"></GridViewColumn>
-                        <GridViewColumn Header="금액"></GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        
+        <Grid Grid.Row="0" Background="#fefce7">
+            <Button Style="{StaticResource button_style}" Margin="0, 35, 350, 0" Content="메뉴"></Button>
+            <Button Style="{StaticResource button_style}" Margin="0, 35, 150, 0" Content="카테고리"></Button>
+            <ListView x:Name="totalList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="분류"></GridViewColumn>
+                    <GridViewColumn Header="수량"></GridViewColumn>
+                    <GridViewColumn Header="금액"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
         </Grid>
+
         <Grid Grid.Row="1">
             <Border Background="White"></Border>
             <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
-            <TextBlock x:Name="totalPrice" FontSize="30" VerticalAlignment="Center" Margin="60, 0, 60, 0">총 매출 액:</TextBlock>
+            <TextBlock Text="총 매출 액:" FontSize="30" VerticalAlignment="Center" Margin="60, 0, 60, 0"/>
+            <TextBlock x:Name="totalPrice" FontSize="30" VerticalAlignment="Center" Margin="250, 0, 70, 0"></TextBlock>
         </Grid>
     </Grid>
 </UserControl>

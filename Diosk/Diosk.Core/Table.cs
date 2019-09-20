@@ -13,7 +13,9 @@ namespace Diosk.Core
 
         public Payment Payment { get; set; }
 
-        public int TotalPrice { get; set; }
+        public int TotalPrice { get; set; } // 테이블 총 결제 금액
+
+        public int totalSales { get; set; } // 총 매출 금액
 
         public DateTime Time { get; set; }  //최근 주문시간
     }
