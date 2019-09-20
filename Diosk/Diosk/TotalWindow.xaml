@@ -14,16 +14,19 @@
             <Setter Property="Height" Value="40"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="#F12243"></Setter>
         </Style>
     </UserControl.Resources>
-
+    
     <Grid>
+        
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="600"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Grid Grid.Row="0" Background="#fefce7">
+        <Grid Grid.Row="1" Background="#fefce7">
             <Button Style="{StaticResource button_style}" Margin="0, 35, 350, 0" Content="메뉴"></Button>
             <Button Style="{StaticResource button_style}" Margin="0, 35, 150, 0" Content="카테고리"></Button>
             <ListView x:Name="totalList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450">
@@ -37,11 +40,16 @@
         </ListView>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Border Background="White"></Border>
             <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
-            <TextBlock Text="총 매출 액:" FontSize="30" VerticalAlignment="Center" Margin="60, 0, 60, 0"/>
-            <TextBlock x:Name="totalPrice" FontSize="30" VerticalAlignment="Center" Margin="250, 0, 70, 0"></TextBlock>
+            <TextBlock Text="총 매출 액:" FontSize="30" VerticalAlignment="Center" Margin="50, 0, 50, 0"/>
+            <TextBlock x:Name="totalPrice" FontSize="30" VerticalAlignment="Center" Margin="250, 0, 70, 0"/>
         </Grid>
+
+        <Grid Grid.Row="0">
+            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="메인 화면" FontSize="20" Foreground="White" Background="#F12243"></Button>
+        </Grid>
+        
     </Grid>
 </UserControl>

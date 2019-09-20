@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Diosk
     /// </summary>
     public partial class TotalWindow : UserControl
     {
+        Core.Table table = new Core.Table();
+
         public TotalWindow()
         {
             InitializeComponent();
@@ -29,8 +32,13 @@ namespace Diosk
 
         private void viewPrice()
         {
-            Core.Table table = new Core.Table();
+            Debug.Write(table.TotalPrice);
             totalPrice.Text = table.totalSales.ToString() + "원";
+        }
+
+        private void MainWinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }
