@@ -21,7 +21,6 @@ namespace Diosk
     /// </summary>
     public partial class PaymentWin : Window
     {
-        Core.Table table = new Core.Table();
         
         public PaymentWin()
         {
@@ -46,12 +45,12 @@ namespace Diosk
 
         private void PaymentTodo(Payment paymentWay)
         {
-            table.TotalPrice = 2000;//테스트 변수
+            App.table.TotalPrice = 2000;
 
-            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + App.table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
-                table.totalSales += table.TotalPrice;
-                Debug.Write(table.totalSales);
+                App.table.totalSales += App.table.TotalPrice;
+                Debug.Write(App.table.totalSales);
 
                 this.Hide();
             }

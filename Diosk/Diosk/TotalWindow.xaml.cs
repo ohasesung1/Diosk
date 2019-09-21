@@ -21,19 +21,16 @@ namespace Diosk
     /// </summary>
     public partial class TotalWindow : UserControl
     {
-        Core.Table table;
 
         public TotalWindow()
         {
             InitializeComponent();
-
-            viewPrice();
         }
 
-        private void viewPrice()
+        public void viewPrice(int totalSalse)
         {
-            Debug.Write(table.TotalPrice);
-            totalPrice.Text = table.totalSales.ToString() + "원";
+            Debug.Write(App.table.totalSales);
+            totalPrice.Text = totalSalse + "원";
         }
 
         private void MainWinBtn_Click(object sender, RoutedEventArgs e)
