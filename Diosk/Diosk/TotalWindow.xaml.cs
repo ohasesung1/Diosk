@@ -21,7 +21,7 @@ namespace Diosk
     /// </summary>
     public partial class TotalWindow : UserControl
     {
-        Core.Table table = new Core.Table();
+        Core.Table table;
 
         public TotalWindow()
         {

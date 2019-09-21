@@ -21,9 +21,8 @@ namespace Diosk
     /// </summary>
     public partial class PaymentWin : Window
     {
-
         Core.Table table = new Core.Table();
-
+        
         public PaymentWin()
         {
             InitializeComponent();
@@ -46,7 +45,7 @@ namespace Diosk
         }
 
         private void PaymentTodo(Payment paymentWay)
-        { 
+        {
             table.TotalPrice = 2000;//테스트 변수
 
             if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
