@@ -6,14 +6,33 @@
         xmlns:local="clr-namespace:Diosk"
         mc:Ignorable="d"
         Width="500" Height="300">
+    <Window.Resources>
+        <Style x:Key="button_style" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" BorderBrush="#F12243" BorderThickness="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"  Width="170" Height="150"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
         <Grid Background="White" Width="500" Height="275">
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"></RowDefinition>
             </Grid.RowDefinitions>
+
             <Grid Grid.Row="0">
-                <Button x:Name="Cash" Height="50" Width="100" Click="Cash_Click" HorizontalAlignment="Left" Content="현금" Margin="100, 0, 100, 0"></Button>
-                <Button x:Name="Card" Height="50" Width="100" Click="Card_Click" HorizontalAlignment="Right" Content="카드" Margin="100, 0, 100, 0"></Button>
+                <Button Style="{StaticResource button_style}" x:Name="Cash" Click="Cash_Click" HorizontalAlignment="Left" Content="현금" Margin="50, 0, 50, 0"/>
+                <Button Style="{StaticResource button_style}" x:Name="Card" Click="Card_Click" HorizontalAlignment="Right" Content="카드" Margin="50, 0, 50, 0"/>
             </Grid>
         </Grid>
     </Grid>
