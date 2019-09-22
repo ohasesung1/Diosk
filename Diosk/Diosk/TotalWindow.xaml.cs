@@ -25,6 +25,8 @@ namespace Diosk
         public TotalWindow()
         {
             InitializeComponent();
+
+            //List<Table> items = new List<Table>();
         }
 
         public void viewPrice(int totalSalse)

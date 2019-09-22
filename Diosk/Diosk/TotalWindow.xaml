@@ -10,34 +10,37 @@
         <Style x:Key="button_style" TargetType="Button">
             <Setter Property="Background" Value="#F12243"></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="Width" Value="90"></Setter>
-            <Setter Property="Height" Value="40"></Setter>
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="BorderBrush" Value="#F12243"></Setter>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#F12243"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="600"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="1" Background="#fefce7">
-            <Button Style="{StaticResource button_style}" Margin="0, 35, 350, 0" Content="메뉴"></Button>
-            <Button Style="{StaticResource button_style}" Margin="0, 35, 150, 0" Content="카테고리"></Button>
-            <ListView x:Name="totalList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="분류"></GridViewColumn>
-                    <GridViewColumn Header="수량"></GridViewColumn>
-                    <GridViewColumn Header="금액"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource button_style}" Margin="5,35,355,0" Content="메뉴"/>
+            <Button Style="{StaticResource button_style}" Margin="105,35,255,0" Content="카테고리"/>
+            <ListView x:Name="totalList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450" Margin="0,75">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="분류" DisplayMemberBinding="{ Binding Classification }"/>
+                        <GridViewColumn Header="수량" DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding Amount}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -48,8 +51,8 @@
         </Grid>
 
         <Grid Grid.Row="0">
-            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="메인 화면" FontSize="20" Foreground="White" Background="#F12243"></Button>
+            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="메인 화면" FontSize="20" Foreground="White" Background="#F12243"/>
         </Grid>
-        
+
     </Grid>
 </UserControl>

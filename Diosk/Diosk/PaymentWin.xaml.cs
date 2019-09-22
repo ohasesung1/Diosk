@@ -50,8 +50,6 @@ namespace Diosk
             if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + App.table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
                 App.table.totalSales += App.table.TotalPrice;
-                Debug.Write(App.table.totalSales);
-
                 this.Hide();
             }
             else
