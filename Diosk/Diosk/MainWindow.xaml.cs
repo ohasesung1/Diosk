@@ -70,7 +70,8 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-    
+            total.viewPrice(App.table.totalSales);
+            total.Visibility = Visibility.Visible;
         }
     }
 }
