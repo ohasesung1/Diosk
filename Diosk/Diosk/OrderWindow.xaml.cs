@@ -20,6 +20,8 @@ namespace Diosk
     /// </summary>
     public partial class OrderWindow : UserControl
     {
+
+        PaymentWin payment = new PaymentWin();
         public OrderWindow()
         {
             InitializeComponent();
@@ -103,8 +105,7 @@ namespace Diosk
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
-            PaymentWin paymentWin = new PaymentWin();
-            paymentWin.ShowDialog();
+            payment.ShowDialog();
         }
     }
 }
