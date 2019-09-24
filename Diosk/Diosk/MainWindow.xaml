@@ -17,7 +17,8 @@
             <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
         </Grid>
         <Grid Grid.Row="1">
-            <ListView x:Name="tbList" Background="#fefce7" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="tbList" Background="#fefce7" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      SelectionChanged="TbList_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" ItemHeight="150" ItemWidth="150" Margin="30"/>

@@ -26,13 +26,8 @@ namespace Diosk
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
-            tbList.MouseDoubleClick += tbClick;
         }
 
-        private void tbClick(object sender, MouseButtonEventArgs e)
-        {
-            order.Visibility = Visibility.Visible;
-        }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -61,6 +56,17 @@ namespace Diosk
             }
         }
 
+        private void TbList_SelectionChanged(object sender, SelectionChangedEventArgs e)    //선택한 테이블 객체 넘겨주기, 화면 이동
+        {
+            TableCtrl tableCtrl = (tbList.SelectedItem as TableCtrl);
+            
+            order.SetTable(tableCtrl.GetTable());
+
+            order.Visibility = Visibility.Visible;
+            
+
+        }
+
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -73,5 +79,7 @@ namespace Diosk
             total.viewPrice(App.table.totalSales);
             total.Visibility = Visibility.Visible;
         }
+
+
     }
 }

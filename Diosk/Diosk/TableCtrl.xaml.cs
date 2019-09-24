@@ -30,6 +30,17 @@ namespace Diosk
             this.table = table;
             UpdateItem();
         }
+
+        public Table GetTable()
+        {
+            return table;
+        }
+
+        public string GetTableById()
+        {
+            return table.Id;
+        }
+
         public void UpdateItem()
         {
             tbId.Text = table.Id;

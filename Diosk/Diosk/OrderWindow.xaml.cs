@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace Diosk
             InitializeComponent();
             this.Loaded += OrderWindow_Loaded;
         }
+
+        public void SetTable(Core.Table table)
+        {
+            Debug.WriteLine(table.Id);    //선택한 테이블 아이디 확인
+        }
+
         private void AddOrderCount(object sender, RoutedEventArgs e)
         {
             Button addBtn = (Button)sender;
