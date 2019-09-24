@@ -22,8 +22,11 @@ namespace Diosk
     public partial class OrderWindow : UserControl
     {
 
-        List<Food> asdf = new List<Food>();
+        List<Food> dataSourceList = new List<Food>();
         PaymentWin payment = new PaymentWin();
+
+        private Core.Table currentTable;
+
         public OrderWindow()
         {
             InitializeComponent();
@@ -32,12 +35,12 @@ namespace Diosk
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
-            lvMenu.ItemsSource = App.FoodData.lstFood;
+            LoadMenu("All");
         }
 
         public void SetTable(Core.Table table)
         {
-            Debug.WriteLine(table.Id);    //선택한 테이블 아이디 확인
+            currentTable = table;
         }
 
         private void AddOrderCount(object sender, RoutedEventArgs e)
@@ -78,23 +81,31 @@ namespace Diosk
 
             if (food == null) return;
 
-            if (lvOrder.Items.Contains(food))
-            {
-                food = (lvOrder.Items.GetItemAt(lvOrder.Items.IndexOf(food)) as Food);
-                food.Count++;
-            }
-            else
+            if (!(lvOrder.Items.Contains(food)))
             {
                 lvOrder.Items.Add(food);
             }
 
+            food.Count++;
             lvOrder.Items.Refresh();
+            SettingTable();
         }
 
-        private void SetTotalPrice(Core.Table table)
+        private void SettingTable()
         {
-            totalPrice.Text += " " + table.TotalPrice;
-        }
+            List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
+
+            int tempPrice = 0;
+            foreach (Food item in list)
+            {
+                tempPrice += item.Price * item.Count;
+            }
+
+            currentTable.FoodList = list;
+
+            currentTable.TotalPrice = tempPrice;
+            TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
+        } 
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -125,17 +136,16 @@ namespace Diosk
 
         private void LoadMenu(String category)
         {
-            asdf.Clear();
+            dataSourceList.Clear();
             foreach (Food food in App.FoodData.lstFood)
             {
                 String food_category = food.Category.ToString();
                 if (food_category.Equals(category) || category.Equals("All"))
                 {
-                    asdf.Add(food);
-                    Debug.WriteLine(food.Name);
+                    dataSourceList.Add(food);
                 }
             }
-            lvMenu.ItemsSource = asdf;
+            lvMenu.ItemsSource = dataSourceList;
             lvMenu.Items.Refresh();
         }
     }
