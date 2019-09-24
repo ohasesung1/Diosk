@@ -33,17 +33,17 @@
             <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"></Button>
         </Grid>
         <Grid Grid.Row="1">
-            <Button Content="전체" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="20,10,0,0"/>
-            <Button Content="버거" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="120,10,0,0"/>
-            <Button Content="사이드" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="220,10,0,0"/>
-            <Button Content="음료" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="320,10,0,0"/>
+            <Button Content="전체" Click="AllButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="20,10,0,0"/>
+            <Button Content="버거" Click="BurgerButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="120,10,0,0"/>
+            <Button Content="사이드" Click="SideButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="220,10,0,0"/>
+            <Button Content="음료" Click="DrinkButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="320,10,0,0"/>
             <ListView ItemContainerStyle="{StaticResource doubleClick}" BorderThickness="3" BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20,45,20,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" ItemHeight="100" ItemWidth="135"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
+                <!--<ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Image Source="{Binding ImagePath}" Stretch="UniformToFill"></Image>
@@ -53,7 +53,7 @@
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
+                </ListView.ItemTemplate>-->
             </ListView>
         </Grid>
 

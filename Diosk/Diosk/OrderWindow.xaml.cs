@@ -31,20 +31,14 @@ namespace Diosk
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
-            lvMenu.ItemsSource = App.FoodData.lstFood;
-            //LoadMenu();
-
-        }
-
-        private void LoadMenu()
-        {
-            App.FoodData.load();
             foreach (Food food in App.FoodData.lstFood)
             {
-                FoodCtrl foodCtrl = new FoodCtrl();
-                foodCtrl.SetItem(food);
-                lvMenu.Items.Add(foodCtrl);
+                FoodCtrl foodctrl = new FoodCtrl();
+                foodctrl.SetItem(food);
+
+                lvMenu.Items.Add(foodctrl);
             }
+
         }
         public void SetTable(Core.Table table)
         {
@@ -77,7 +71,7 @@ namespace Diosk
 
         private void removeCheckFood(Food food)
         {
-            if(food.Count <= 0)
+            if (food.Count <= 0)
             {
                 lvOrder.Items.Remove(food);
             }
@@ -107,9 +101,6 @@ namespace Diosk
             totalPrice.Text += " " + table.TotalPrice;
         }
 
-
-       
-
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
             payment.ShowDialog();
@@ -118,6 +109,40 @@ namespace Diosk
         private void BackToMainWindow(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void AllButton(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Burger");
+        }
+        private void BurgerButton(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Burger");
+        }
+        private void SideButton(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Burger");
+        }
+        private void DrinkButton(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Burger");
+        }
+
+        private void LoadMenu(String category)
+        {
+            lvMenu.Items.Clear();
+            foreach (Food food in App.FoodData.lstFood)
+            {
+                String food_category = food.Category.ToString();
+                if (food_category.Equals(category))
+                {
+                    Debug.WriteLine("asdf");
+                    FoodCtrl foodctrl = new FoodCtrl();
+                    foodctrl.SetItem(food);
+
+                    lvMenu.Items.Add(foodctrl);
+                }
+            }
         }
     }
 }
