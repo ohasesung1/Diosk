@@ -87,8 +87,8 @@ namespace Diosk
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
-
-            LoadMenu();
+            lvMenu.ItemsSource = App.FoodData.lstFood;
+            //LoadMenu();
 
         }
 
@@ -106,6 +106,11 @@ namespace Diosk
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
             payment.ShowDialog();
+        }
+
+        private void BackToMainWindow(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }
