@@ -28,7 +28,24 @@ namespace Diosk
             InitializeComponent();
             this.Loaded += OrderWindow_Loaded;
         }
+        private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.FoodData.load();
+            lvMenu.ItemsSource = App.FoodData.lstFood;
+            //LoadMenu();
 
+        }
+
+        private void LoadMenu()
+        {
+            App.FoodData.load();
+            foreach (Food food in App.FoodData.lstFood)
+            {
+                FoodCtrl foodCtrl = new FoodCtrl();
+                foodCtrl.SetItem(food);
+                lvMenu.Items.Add(foodCtrl);
+            }
+        }
         public void SetTable(Core.Table table)
         {
             Debug.WriteLine(table.Id);    //선택한 테이블 아이디 확인
@@ -91,24 +108,7 @@ namespace Diosk
         }
 
 
-        private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            App.FoodData.load();
-            lvMenu.ItemsSource = App.FoodData.lstFood;
-            //LoadMenu();
-
-        }
-
-        private void LoadMenu()
-        {
-            App.FoodData.load();
-            foreach (Food food in App.FoodData.lstFood)
-            {
-                FoodCtrl foodCtrl = new FoodCtrl();
-                foodCtrl.SetItem(food);
-                lvMenu.Items.Add(foodCtrl);
-            }
-        }
+       
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
