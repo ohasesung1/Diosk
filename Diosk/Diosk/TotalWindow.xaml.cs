@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diosk.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace Diosk
         {
             InitializeComponent();
 
-            //List<Table> items = new List<Table>();
+            //this.Loaded += MainWindow_Loaded;
+            //tbList.MouseDoubleClick += tbClick;
         }
 
         public void viewPrice(int totalSalse)
@@ -38,6 +40,16 @@ namespace Diosk
         private void MainWinBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Category_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
