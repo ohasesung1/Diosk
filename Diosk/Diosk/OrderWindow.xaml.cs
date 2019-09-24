@@ -22,6 +22,7 @@ namespace Diosk
     public partial class OrderWindow : UserControl
     {
 
+        List<Food> asdf = new List<Food>();
         PaymentWin payment = new PaymentWin();
         public OrderWindow()
         {
@@ -31,15 +32,9 @@ namespace Diosk
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
             App.FoodData.load();
-            foreach (Food food in App.FoodData.lstFood)
-            {
-                FoodCtrl foodctrl = new FoodCtrl();
-                foodctrl.SetItem(food);
-
-                lvMenu.Items.Add(foodctrl);
-            }
-
+            lvMenu.ItemsSource = App.FoodData.lstFood;
         }
+
         public void SetTable(Core.Table table)
         {
             Debug.WriteLine(table.Id);    //선택한 테이블 아이디 확인
@@ -113,7 +108,7 @@ namespace Diosk
 
         private void AllButton(object sender, RoutedEventArgs e)
         {
-            LoadMenu("Burger");
+            LoadMenu("All");
         }
         private void BurgerButton(object sender, RoutedEventArgs e)
         {
@@ -121,28 +116,27 @@ namespace Diosk
         }
         private void SideButton(object sender, RoutedEventArgs e)
         {
-            LoadMenu("Burger");
+            LoadMenu("Side");
         }
         private void DrinkButton(object sender, RoutedEventArgs e)
         {
-            LoadMenu("Burger");
+            LoadMenu("Drink");
         }
 
         private void LoadMenu(String category)
         {
-            lvMenu.Items.Clear();
+            asdf.Clear();
             foreach (Food food in App.FoodData.lstFood)
             {
                 String food_category = food.Category.ToString();
-                if (food_category.Equals(category))
+                if (food_category.Equals(category) || category.Equals("All"))
                 {
-                    Debug.WriteLine("asdf");
-                    FoodCtrl foodctrl = new FoodCtrl();
-                    foodctrl.SetItem(food);
-
-                    lvMenu.Items.Add(foodctrl);
+                    asdf.Add(food);
+                    Debug.WriteLine(food.Name);
                 }
             }
+            lvMenu.ItemsSource = asdf;
+            lvMenu.Items.Refresh();
         }
     }
 }
