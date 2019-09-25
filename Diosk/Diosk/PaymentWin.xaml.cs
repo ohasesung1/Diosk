@@ -44,8 +44,7 @@ namespace Diosk
         }
 
         private void PaymentTodo(Payment paymentWay)
-        {
-            App.table.TotalPrice = 2000;
+        { 
             
 
             if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + App.table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
@@ -54,7 +53,6 @@ namespace Diosk
                 ((MainWindow)System.Windows.Application.Current.MainWindow).order.lvOrder.Items.Clear();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).order.Visibility = Visibility.Collapsed;
                 this.Hide();
-                
             }
             else
             {

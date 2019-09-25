@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Table = Diosk.Core.Table;
 
 namespace Diosk
 {
@@ -45,11 +46,17 @@ namespace Diosk
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
 
+        
         }
 
         private void Category_Click(object sender, RoutedEventArgs e)
         {
-
+            //App.TableData.Load();
+            //int count = 0;
+            //foreach (Table table in App.TableData.lstTable)
+            //{
+            //    Debug.Write(table.FoodList);
+            //}
         }
     }
 }
