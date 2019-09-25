@@ -42,6 +42,7 @@ namespace Diosk
             currentTable = table;
         }
 
+        //주문 메뉴의 +버튼 누를때 사용하는 함수.
         private void AddOrderCount(object sender, RoutedEventArgs e)
         {
             Button addBtn = (Button)sender;
@@ -52,7 +53,10 @@ namespace Diosk
             }
 
             lvOrder.Items.Refresh();
+            SettingTable();
         }
+
+        //주문 메뉴의 -버튼 누를때 사용하는 함수.
         private void SubtractOrderCount(object sender, RoutedEventArgs e)
         {
             Button subBtn = (Button)sender;
@@ -64,6 +68,7 @@ namespace Diosk
             }
 
             lvOrder.Items.Refresh();
+            SettingTable();
         }
 
         private void removeCheckFood(Food food)
@@ -74,6 +79,7 @@ namespace Diosk
             }
         }
 
+        //주문목록에 Food 추가하는 함수.
         private void AddOrderMenu(object sender, RoutedEventArgs e)
         {
             Food food = ((ListViewItem)sender).Content as Food;
@@ -90,6 +96,7 @@ namespace Diosk
             SettingTable();
         }
 
+        //테이블의 값을 세팅해주는 함수.
         private void SettingTable()
         {
             List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
@@ -101,23 +108,19 @@ namespace Diosk
             }
 
             currentTable.FoodList = list;
-
             currentTable.TotalPrice = tempPrice;
 
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
         }
 
+        //클릭시 푸드 이미지 미리보기를 해주는 함수.
         private void FoodImgPreview(object sender, RoutedEventArgs e)
         {
-            //Food food = ((ListViewItem)sender).Content as Food;
-            //BitmapImage bImage = new BitmapImage();
-            //bImage.BeginInit();
-            //bImage.UriSource = new Uri(food.ImagePath, UriKind.Relative);
-            //bImage.EndInit();
             Image image = (Image)sender;
             selectFoodImg.Source = image.Source;
         }
 
+        //주문 취소하는 함수.
         private void orderCancel(object sender, RoutedEventArgs e)
         {
             if (lvOrder.SelectedItem != null)
@@ -126,6 +129,7 @@ namespace Diosk
             }
         }
 
+        //모든 주문을 취소하는 함수.
         private void orderAllCancel(object sender, RoutedEventArgs e)
         {
             lvOrder.Items.Clear();
