@@ -21,7 +21,6 @@ namespace Diosk
     /// </summary>
     public partial class OrderWindow : UserControl
     {
-
         List<Food> dataSourceList = new List<Food>();
         PaymentWin payment = new PaymentWin();
 
