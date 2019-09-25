@@ -103,8 +103,33 @@ namespace Diosk
             currentTable.FoodList = list;
 
             currentTable.TotalPrice = tempPrice;
+
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
-        } 
+        }
+
+        private void FoodImgPreview(object sender, RoutedEventArgs e)
+        {
+            //Food food = ((ListViewItem)sender).Content as Food;
+            //BitmapImage bImage = new BitmapImage();
+            //bImage.BeginInit();
+            //bImage.UriSource = new Uri(food.ImagePath, UriKind.Relative);
+            //bImage.EndInit();
+            Image image = (Image)sender;
+            selectFoodImg.Source = image.Source;
+        }
+
+        private void orderCancel(object sender, RoutedEventArgs e)
+        {
+            if (lvOrder.SelectedItem != null)
+            {
+                lvOrder.Items.Remove(lvOrder.SelectedItem);
+            }
+        }
+
+        private void orderAllCancel(object sender, RoutedEventArgs e)
+        {
+            lvOrder.Items.Clear();
+        }
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
