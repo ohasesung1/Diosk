@@ -125,13 +125,22 @@ namespace Diosk
         {
             if (lvOrder.SelectedItem != null)
             {
-                lvOrder.Items.Remove(lvOrder.SelectedItem);
+                Food food = lvOrder.SelectedItem as Food;
+                food.Count = 0;
+                lvOrder.Items.Remove(food);
             }
         }
 
         //모든 주문을 취소하는 함수.
-        private void orderAllCancel(object sender, RoutedEventArgs e)
+        public void orderAllCancel(object sender, RoutedEventArgs e)
         {
+            List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
+
+            foreach(Food item in list)
+            {
+                item.Count = 0;
+            }
+
             lvOrder.Items.Clear();
         }
 
