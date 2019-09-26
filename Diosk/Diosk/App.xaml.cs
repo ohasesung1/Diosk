@@ -15,7 +15,7 @@ namespace Diosk
     {
         public static FoodDataSource FoodData = new FoodDataSource();
         public static TableDataSource TableData = new TableDataSource();
-        public static Core.Table table = new Core.Table();
+        public static Core.Payment payment = new Core.Payment();
     }
 }
 

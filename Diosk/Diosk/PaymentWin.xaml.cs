@@ -21,6 +21,7 @@ namespace Diosk
     /// </summary>
     public partial class PaymentWin : Window
     {
+        public Core.Table currentTable;
 
         public PaymentWin()
         {
@@ -29,35 +30,30 @@ namespace Diosk
 
         private void Card_Click(object sender, RoutedEventArgs e)
         {
-            Payment paymentWay;
-            paymentWay = Payment.Card;
-
-            PaymentTodo(paymentWay);
+            PaymentWay paymentWay;
+            paymentWay = PaymentWay.Card;
+            this.Hide();
         }
 
-        private void Cash_Click(object sender, RoutedEventArgs e)
+        public string Cash_Click(object sender, RoutedEventArgs e)
         {
-            Payment paymentWay;
-            paymentWay = Payment.Cash;
+            PaymentWay paymentWay;
+            paymentWay = PaymentWay.Cash;
+            this.Hide();
 
-            PaymentTodo(paymentWay);
+            return paymentWay.ToString();
         }
 
-        private void PaymentTodo(Payment paymentWay)
-        { 
-            
+        private int totalPrice()
+        {
+            int temp = 0;
 
-            if ((MessageBox.Show("결제 방식: " + paymentWay + "\n총금액: " + App.table.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+            foreach (Core.Table table in App.TableData.lstTable)
             {
-                App.table.totalSales += App.table.TotalPrice;
-                ((MainWindow)System.Windows.Application.Current.MainWindow).order.lvOrder.Items.Clear();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).order.Visibility = Visibility.Collapsed;
-                this.Hide();
+                temp += table.TotalPrice;
             }
-            else
-            {
-                this.Hide();
-            }
+
+            return temp;
         }
 
     }

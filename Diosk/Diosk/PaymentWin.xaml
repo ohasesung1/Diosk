@@ -35,5 +35,6 @@
                 <Button Style="{StaticResource button_style}" x:Name="Card" Click="Card_Click" HorizontalAlignment="Right" Content="카드" Margin="50, 0, 50, 0"/>
             </Grid>
         </Grid>
+        <!--<local:OrderWindow x:Name="order" Visibility="Collapsed"/>-->
     </Grid>
 </Window>

@@ -34,7 +34,7 @@ namespace Diosk
 
         public void viewPrice(int totalSalse)
         {
-            Debug.Write(App.table.totalSales);
+            Debug.Write(App.payment.totalSales);
             totalPrice.Text = totalSalse + "원";
         }
 

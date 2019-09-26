@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Diosk.Core
 {
-    public enum Payment
+    public class Payment
     {
-        Cash,
-        Card,
+        public List<Food> FoodList { get; set; }
+
+        public int TotalPrice { get; set; } // 테이블 총 결제 금액
+
+        public int totalSales { get; set; } // 총 매출 금액
     }
 }
