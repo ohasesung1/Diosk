@@ -19,8 +19,18 @@ namespace Diosk
     /// <summary>
     /// Interaction logic for OrderWindow.xaml
     /// </summary>
+    /// 
+
+    public class OrderArgs : EventArgs
+    {
+        public string tableId { get; set; }
+    }
+
     public partial class OrderWindow : UserControl
     {
+        public delegate void OrderCompleteHandler(Object sender, OrderArgs args);
+        public event OrderCompleteHandler OnOrderComplete;
+
         List<Food> dataSourceList = new List<Food>();
         PaymentWin payment = new PaymentWin();
 
@@ -125,6 +135,7 @@ namespace Diosk
             currentTable.TotalPrice = tempPrice;
 
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
+            currentTable.Time = DateTime.Now;
         }
 
         //클릭시 푸드 이미지 미리보기를 해주는 함수.
@@ -167,6 +178,13 @@ namespace Diosk
 
         private void BackToMainWindow(object sender, RoutedEventArgs e)
         {
+            OrderArgs args = new OrderArgs();
+            args.tableId = currentTable.Id;
+
+            if (OnOrderComplete != null)
+            {
+                OnOrderComplete(this, args);
+            }
             this.Visibility = Visibility.Collapsed;
         }
 
