@@ -36,11 +36,6 @@ namespace Diosk
             return table;
         }
 
-        public string GetTableById()
-        {
-            return table.Id;
-        }
-
         public void UpdateItem()
         {
             tbId.Text = table.Id;
