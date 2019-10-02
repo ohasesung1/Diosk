@@ -37,9 +37,23 @@ namespace Diosk
             LoadMenu("All");
         }
 
+        private void LoadOrder()
+        {
+            lvOrder.Items.Clear();
+            if (currentTable.FoodList != null)
+            {
+                foreach (Food food in currentTable.FoodList)
+                {
+                    lvOrder.Items.Add(food);
+                }
+            }
+            lvOrder.Items.Refresh();
+        }
+
         public void SetTable(Core.Table table)
         {
             currentTable = table;
+            LoadOrder();
         }
 
         //주문 메뉴의 +버튼 누를때 사용하는 함수.
@@ -128,20 +142,22 @@ namespace Diosk
                 Food food = lvOrder.SelectedItem as Food;
                 food.Count = 0;
                 lvOrder.Items.Remove(food);
+                SettingTable();
             }
         }
 
         //모든 주문을 취소하는 함수.
         public void orderAllCancel(object sender, RoutedEventArgs e)
         {
-            List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
-
-            foreach(Food item in list)
+            if (currentTable.FoodList != null)
             {
-                item.Count = 0;
+                foreach (Food item in currentTable.FoodList)
+                {
+                    item.Count = 0;
+                }
+                lvOrder.Items.Clear();
+                SettingTable();
             }
-
-            lvOrder.Items.Clear();
         }
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
