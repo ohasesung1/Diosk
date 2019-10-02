@@ -29,6 +29,7 @@ namespace Diosk
             order.OnOrderComplete += Order_OnOrderComplete;
         }
 
+        // 주문 후 테이블 정보 새로고침
         private void Order_OnOrderComplete(object sender, OrderArgs args)
         {
             TableCtrl tablectrl = tbList.SelectedItem as TableCtrl;
@@ -40,17 +41,18 @@ namespace Diosk
                 {
                     tablectrl.SetTable(list);
 
-                    //Debug.WriteLine(list.Id + "/" + list.Time);
-                    //foreach (Food food in list.FoodList)
-                    //{
-                    //    Debug.WriteLine(food.Name + "*" + food.Count);
-                    //}
-                    Debug.WriteLine(list.TotalPrice);
+                    
                 }
-                else
+                Debug.WriteLine(list.Id + "/" + list.Time);
+                if (list.FoodList != null)
                 {
-                    Debug.WriteLine(list.Time);
+
+                    foreach (Food food in list.FoodList)
+                    {
+                        Debug.WriteLine(food.Name + "*" + food.Count);
+                    }
                 }
+                
             }
         }
 
@@ -80,7 +82,8 @@ namespace Diosk
             }
         }
 
-        private void TbList_SelectionChanged(object sender, SelectionChangedEventArgs e)    //선택한 테이블 객체 넘겨주기, 화면 이동
+        //선택한 테이블 객체 넘겨주기, 화면 이동
+        private void TbList_SelectionChanged(object sender, SelectionChangedEventArgs e)    
         {
             TableCtrl tableCtrl = (tbList.SelectedItem as TableCtrl);
             
