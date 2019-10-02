@@ -10,7 +10,7 @@
         <WrapPanel>
             <TextBlock x:Name="tbId"></TextBlock>
             <TextBlock x:Name="tbTime" Margin="10"></TextBlock>
-            <ListView x:Name="tbList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+            <ListView x:Name="tbList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" IsEnabled="False">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -20,9 +20,9 @@
                     <DataTemplate>
                         <Grid>
                             <WrapPanel>
-                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"></TextBlock>
-                                <TextBlock Text=" * "/>
-                                <TextBlock VerticalAlignment="Bottom" Text="{Binding Count}"></TextBlock>
+                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" Foreground="Black"></TextBlock>
+                                <TextBlock Text=" * " Foreground="Black"/>
+                                <TextBlock VerticalAlignment="Bottom" Text="{Binding Count}" Foreground="Black"></TextBlock>
                             </WrapPanel>
                         </Grid>
                     </DataTemplate>
