@@ -26,8 +26,40 @@ namespace Diosk
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
+            order.OnOrderComplete += Order_OnOrderComplete;
         }
 
+        private void Order_OnOrderComplete(object sender, OrderArgs args)
+        {
+            foreach(Table list in App.TableData.lstTable)
+            {
+                if(list.Id == args.tableId)
+                {
+                    Debug.WriteLine("**"+list.Time);
+                }
+                else
+                {
+                    Debug.WriteLine(list.Time);
+                }
+            }
+        }
+
+        //public void TableRefresh()
+        //{
+        //    tbList.Items.Refresh();
+
+        //    foreach (Table asdf in App.TableData.lstTable)
+        //    {
+        //        if (asdf.Time == null)
+        //        {
+        //            Debug.WriteLine("null");
+        //        }
+        //        else
+        //        {
+        //            Debug.WriteLine(asdf.Id+"/"+asdf.Time);
+        //        }
+        //    }
+        //}
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,7 +84,6 @@ namespace Diosk
                 tableCtrl.SetTable(table);
 
                 tbList.Items.Add(tableCtrl);
-                
             }
         }
 
@@ -76,7 +107,7 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            total.viewPrice(App.table.totalSales);
+            total.viewPrice(App.payment.totalSales);
             total.Visibility = Visibility.Visible;
         }
 
