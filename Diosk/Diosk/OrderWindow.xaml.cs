@@ -116,6 +116,7 @@ namespace Diosk
             }
 
             food.Count++;
+            Debug.Write(lvMenu.Items);
             lvOrder.Items.Refresh();
             SettingTable();
         }
@@ -171,9 +172,46 @@ namespace Diosk
             }
         }
 
+        private void PaymentTodo()
+        {
+
+            if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+            {
+                App.payment.totalSales = totalPrice();
+                foreach (Food item in currentTable.FoodList)
+                {
+                    if (App.payment.FoodList.Contains(item))
+                    {
+                        //App.payment.FoodList.Find();
+                    }
+                    else
+                    {
+                        App.payment.FoodList.Add(item);
+                    }
+                }
+                lvOrder.Items.Clear();
+                this.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        //총 결제 금액 계산 함수
+        private int totalPrice()
+        {
+            int temp = 0;
+
+            foreach (Core.Table table in App.TableData.lstTable)
+            {
+                temp += table.TotalPrice;
+            }
+
+            return temp;
+        }
+
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
             payment.ShowDialog();
+
+            PaymentTodo();
         }
 
         private void BackToMainWindow(object sender, RoutedEventArgs e)
