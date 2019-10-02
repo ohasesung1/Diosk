@@ -44,7 +44,9 @@ namespace Diosk
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            
+            //List<Payment> items = App.payment.FoodList;
+            //foreach()
+            paymentList.ItemsSource = App.payment.FoodList;
         }
 
         private void Category_Click(object sender, RoutedEventArgs e)
