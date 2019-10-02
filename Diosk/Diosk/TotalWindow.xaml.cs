@@ -34,7 +34,6 @@ namespace Diosk
 
         public void viewPrice(int totalSalse)
         {
-            Debug.Write(App.payment.totalSales);
             totalPrice.Text = totalSalse + "원";
         }
 
@@ -45,8 +44,7 @@ namespace Diosk
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-
-        
+            
         }
 
         private void Category_Click(object sender, RoutedEventArgs e)

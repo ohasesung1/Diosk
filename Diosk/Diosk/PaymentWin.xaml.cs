@@ -31,17 +31,17 @@ namespace Diosk
         private void Card_Click(object sender, RoutedEventArgs e)
         {
             PaymentWay paymentWay;
-            paymentWay = PaymentWay.Card;
+            App.payment.paymentWay = PaymentWay.Card;
             this.Hide();
         }
 
-        public string Cash_Click(object sender, RoutedEventArgs e)
+        public void Cash_Click(object sender, RoutedEventArgs e)
         {
             PaymentWay paymentWay;
-            paymentWay = PaymentWay.Cash;
+            App.payment.paymentWay = PaymentWay.Cash;
             this.Hide();
 
-            return paymentWay.ToString();
+            //return paymentWay.ToString();
         }
 
         private int totalPrice()
