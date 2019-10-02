@@ -58,6 +58,7 @@ namespace Diosk
                 }
             }
             lvOrder.Items.Refresh();
+            SettingTable();
         }
 
         public void SetTable(Core.Table table)
@@ -106,19 +107,30 @@ namespace Diosk
         //주문목록에 Food 추가하는 함수.
         private void AddOrderMenu(object sender, RoutedEventArgs e)
         {
-            Food food = ((ListViewItem)sender).Content as Food;
-
+            Food food = newFood(((ListViewItem)sender).DataContext as Food);
             if (food == null) return;
 
-            if (!(lvOrder.Items.Contains(food)))
+            if (lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name) == null)
             {
                 lvOrder.Items.Add(food);
             }
 
-            food.Count++;
-            Debug.Write(lvMenu.Items);
+            lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name).Count++;
             lvOrder.Items.Refresh();
             SettingTable();
+        }
+
+        private Food newFood(Food item)
+        {
+            Food food = new Food();
+
+            food.Name = item.Name;
+            food.Price = item.Price;
+            food.Count = 0;
+            food.ImagePath = item.ImagePath;
+            food.Category = item.Category;
+
+            return food;
         }
 
         //테이블의 값을 세팅해주는 함수.
@@ -177,19 +189,25 @@ namespace Diosk
 
             if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
-                App.payment.totalSales = totalPrice();
+                App.payment.totalSales += currentTable.TotalPrice;
                 foreach (Food item in currentTable.FoodList)
                 {
                     if (App.payment.FoodList.Contains(item))
                     {
-                        //App.payment.FoodList.Find();
+                        App.payment.FoodList.Find(x => x == item).Count += item.Count;
                     }
                     else
                     {
                         App.payment.FoodList.Add(item);
                     }
                 }
-                lvOrder.Items.Clear();
+
+                Debug.Write(lvMenu.Items);
+                Debug.Write(lvOrder.Items);
+                Debug.Write(currentTable.FoodList);
+                Debug.Write(App.payment.FoodList);
+
+                orderAllCancel(null, null);
                 this.Visibility = Visibility.Collapsed;
             }
         }
