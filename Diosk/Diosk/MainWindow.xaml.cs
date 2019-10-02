@@ -31,11 +31,21 @@ namespace Diosk
 
         private void Order_OnOrderComplete(object sender, OrderArgs args)
         {
-            foreach(Table list in App.TableData.lstTable)
+            TableCtrl tablectrl = tbList.SelectedItem as TableCtrl;
+           
+
+            foreach (Table list in App.TableData.lstTable)
             {
-                if(list.Id == args.tableId)
+                if (list.Id == args.tableId)
                 {
-                    Debug.WriteLine("**"+list.Time);
+                    tablectrl.SetTable(list);
+
+                    //Debug.WriteLine(list.Id + "/" + list.Time);
+                    //foreach (Food food in list.FoodList)
+                    //{
+                    //    Debug.WriteLine(food.Name + "*" + food.Count);
+                    //}
+                    Debug.WriteLine(list.TotalPrice);
                 }
                 else
                 {
@@ -43,23 +53,6 @@ namespace Diosk
                 }
             }
         }
-
-        //public void TableRefresh()
-        //{
-        //    tbList.Items.Refresh();
-
-        //    foreach (Table asdf in App.TableData.lstTable)
-        //    {
-        //        if (asdf.Time == null)
-        //        {
-        //            Debug.WriteLine("null");
-        //        }
-        //        else
-        //        {
-        //            Debug.WriteLine(asdf.Id+"/"+asdf.Time);
-        //        }
-        //    }
-        //}
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
