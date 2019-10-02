@@ -30,31 +30,14 @@ namespace Diosk
 
         private void Card_Click(object sender, RoutedEventArgs e)
         {
-            PaymentWay paymentWay;
             App.payment.paymentWay = PaymentWay.Card;
             this.Hide();
         }
 
         public void Cash_Click(object sender, RoutedEventArgs e)
         {
-            PaymentWay paymentWay;
             App.payment.paymentWay = PaymentWay.Cash;
             this.Hide();
-
-            //return paymentWay.ToString();
         }
-
-        private int totalPrice()
-        {
-            int temp = 0;
-
-            foreach (Core.Table table in App.TableData.lstTable)
-            {
-                temp += table.TotalPrice;
-            }
-
-            return temp;
-        }
-
     }
 }
