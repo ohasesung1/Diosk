@@ -15,5 +15,10 @@ namespace Diosk.Core
         public int totalSales { get; set; } // 총 매출 금액
 
         public PaymentWay paymentWay { get; set; }
+
+        public Payment()
+        {
+            FoodList = new List<Food>();
+        }
     }
 }
