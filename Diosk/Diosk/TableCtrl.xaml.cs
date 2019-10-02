@@ -40,6 +40,7 @@ namespace Diosk
         {
             tbId.Text = table.Id;
             tbTime.Text = table.Time.ToString("hh : mm : ss");
+            tbList.ItemsSource = table.FoodList;
         }
     }
 }

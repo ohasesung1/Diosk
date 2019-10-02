@@ -10,7 +10,24 @@
         <WrapPanel>
             <TextBlock x:Name="tbId"></TextBlock>
             <TextBlock x:Name="tbTime" Margin="10"></TextBlock>
-            <TextBlock x:Name="tbList"></TextBlock>
+            <ListView x:Name="tbList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"></TextBlock>
+                                <TextBlock Text=" * "/>
+                                <TextBlock VerticalAlignment="Bottom" Text="{Binding Count}"></TextBlock>
+                            </WrapPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </WrapPanel>
     </Grid>
 </UserControl>

@@ -40,19 +40,7 @@ namespace Diosk
                 if (list.Id == args.tableId)
                 {
                     tablectrl.SetTable(list);
-
-                    
-                }
-                Debug.WriteLine(list.Id + "/" + list.Time);
-                if (list.FoodList != null)
-                {
-
-                    foreach (Food food in list.FoodList)
-                    {
-                        Debug.WriteLine(food.Name + "*" + food.Count);
-                    }
-                }
-                
+                }                
             }
         }
 
