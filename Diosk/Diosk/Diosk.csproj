@@ -59,7 +59,6 @@
       <DependentUpon>FoodCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="FoodDataSource.cs" />
-    <Compile Include="paymentDataSource.cs" />
     <Compile Include="PaymentWin.xaml.cs">
       <DependentUpon>PaymentWin.xaml</DependentUpon>
     </Compile>
