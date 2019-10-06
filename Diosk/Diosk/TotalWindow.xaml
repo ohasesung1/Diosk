@@ -30,7 +30,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource button_style}" x:Name="menu" Margin="5,35,355,0" Content="메뉴" Click="Menu_Click"/>
+            <Button Style="{StaticResource button_style}" x:Name="menu" Margin="5,35,355,0" Content="메뉴" Click="Menu_Click_1"/>
             <Button Style="{StaticResource button_style}" x:Name="category" Margin="105,35,255,0" Content="카테고리" Click="Category_Click"/>
             <ListView x:Name="paymentList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450" Margin="0,75">
                 <ListView.View>

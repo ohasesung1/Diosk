@@ -41,22 +41,26 @@ namespace Diosk
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void Menu_Click(List<Food> paymentItem)
-        {
-            paymentList.ItemsSource = paymentItem;
-            paymentList.Items.Refresh();
-        }
+        //private void Menu_Click(List<Food> paymentItem)
+        //{
+        //    paymentList.ItemsSource = paymentItem;
+        //    paymentList.Items.Refresh();
+        //}
 
         public void viewSalseMenu(List<Food> paymentItem)
         {
             paymentList.ItemsSource = paymentItem;
-            Menu_Click(paymentItem);
             paymentList.Items.Refresh();
         }
 
         private void Category_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Menu_Click_1(object sender, RoutedEventArgs e)
+        {
+            viewSalseMenu(App.payment.FoodList);
         }
     }
 }

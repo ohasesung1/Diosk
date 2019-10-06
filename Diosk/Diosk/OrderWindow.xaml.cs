@@ -183,18 +183,17 @@ namespace Diosk
                 SettingTable();
             }
         }
-
+        //결제 된 item을 payment.foodlist에 저장하는 함수
         private void PaymentTodo()
         {
-
             if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
-                App.payment.totalSales += currentTable.TotalPrice;
+                App.payment.sellingPrice += currentTable.TotalPrice;
                 foreach (Food item in currentTable.FoodList)
                 {
                     if (App.payment.FoodList.Contains(item))
                     {
-                        App.payment.FoodList.Find(x => x == item).Count += item.Count;
+                        //App.payment.FoodList.IndexOf(item);
                     }
                     else
                     {
@@ -202,12 +201,12 @@ namespace Diosk
                     }
                 }
 
-                Debug.Write(lvMenu.Items);
-                Debug.Write(lvOrder.Items);
-                Debug.Write(currentTable.FoodList);
-                Debug.Write(App.payment.FoodList);
+                //Debug.Write(lvMenu.Items);
+                //Debug.Write(lvOrder.Items);
+                //Debug.Write(currentTable.FoodList);
+                //Debug.Write(App.payment.FoodList);
 
-                orderAllCancel(null, null);
+                //orderAllCancel(null, null);
                 this.Visibility = Visibility.Collapsed;
             }
         }
@@ -227,9 +226,9 @@ namespace Diosk
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
-            payment.ShowDialog();
+                    payment.ShowDialog();
 
-            PaymentTodo();
+                    PaymentTodo();
         }
 
         private void BackToMainWindow(object sender, RoutedEventArgs e)
