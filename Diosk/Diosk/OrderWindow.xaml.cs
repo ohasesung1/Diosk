@@ -191,13 +191,15 @@ namespace Diosk
                 App.payment.sellingPrice += currentTable.TotalPrice;
                 foreach (Food item in currentTable.FoodList)
                 {
-                    if (App.payment.FoodList.Contains(item))
+                    Food food = newFood(item);
+                    food.Count = item.Count;
+                    if (App.payment.FoodList.Find(x => x.Name == food.Name) != null)
                     {
-                        //App.payment.FoodList.IndexOf(item);
+                        App.payment.FoodList.Find(x => x.Name == food.Name).Count += food.Count;
                     }
                     else
                     {
-                        App.payment.FoodList.Add(item);
+                        App.payment.FoodList.Add(food);
                     }
                 }
 
