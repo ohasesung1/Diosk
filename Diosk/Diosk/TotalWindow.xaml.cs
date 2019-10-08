@@ -23,13 +23,12 @@ namespace Diosk
     /// </summary>
     public partial class TotalWindow : UserControl
     {
-        List<Food> foods = new List<Food>();
+        List<Food> salesFoods = new List<Food>();
 
         public TotalWindow()
         {
             InitializeComponent();
         }
-
 
         public void viewSalse(int sellingPrice)
         {
@@ -48,18 +47,45 @@ namespace Diosk
                 item.totalPrice = item.Price * item.Count;
             }
 
+            Debug.Write(App.payment.FoodList);
+
             paymentList.ItemsSource = paymentItem;
             paymentList.Items.Refresh();
-        }
-
-        private void Category_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
             viewSalseMenu(App.payment.FoodList);
+        }
+
+        private void LoadMenu(String category)
+        {
+            salesFoods.Clear();
+            foreach (Food food in App.payment.FoodList)
+            {
+                String food_category = food.Category.ToString();
+                if (food_category.Equals(category) || category.Equals("All"))
+                {
+                    salesFoods.Add(food);
+                }
+            }
+            paymentList.ItemsSource = salesFoods;
+            paymentList.Items.Refresh();
+        }
+
+        private void Burger_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Burger");
+        }
+
+        private void Side_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Side");
+        }
+
+        private void Drink_Click(object sender, RoutedEventArgs e)
+        {
+            LoadMenu("Drink");
         }
     }
 }

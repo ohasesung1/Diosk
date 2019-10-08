@@ -8,8 +8,8 @@
              d:DesignHeight="800" d:DesignWidth="450">
     <UserControl.Resources>
         <Style x:Key="button_style" TargetType="Button">
-            <Setter Property="Background" Value="#F12243"></Setter>
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="Background" Value="#F12243"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Width" Value="90"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="FontSize" Value="20"/>
@@ -27,18 +27,16 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Background="#fefce7">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <Button Style="{StaticResource button_style}" x:Name="menu" Margin="5,35,355,0" Content="메뉴" Click="Menu_Click_1"/>
-            <Button Style="{StaticResource button_style}" x:Name="category" Margin="105,35,255,0" Content="카테고리" Click="Category_Click"/>
+            <Button Style="{StaticResource button_style}" x:Name="burger"  Margin="105,35,255,0" Content="버거" Click="Burger_Click"/>
+            <Button Style="{StaticResource button_style}" x:Name="side"   Margin="200,35,160,0" Content="사이드" Click="Side_Click" RenderTransformOrigin="0.513,0.468"/>
+            <Button Style="{StaticResource button_style}" x:Name="drink" Margin="295,35,65,0" Content="음료" Click="Drink_Click"/>
             <ListView x:Name="paymentList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450" Margin="0,75">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }"/>
-                        <GridViewColumn Header="수량" DisplayMemberBinding="{Binding Count}"/>
-                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding totalPrice}"/>
-                        <!--<GridViewColumn Header="총 금액" t-->
+                        <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }" Width="150"/>
+                        <GridViewColumn Header="수량" DisplayMemberBinding="{Binding Count}" Width="50"/>
+                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding totalPrice}" Width="240"/>
                     </GridView>
                 </ListView.View>
             </ListView>
