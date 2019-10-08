@@ -41,14 +41,13 @@ namespace Diosk
             this.Visibility = Visibility.Collapsed;
         }
 
-        //private void Menu_Click(List<Food> paymentItem)
-        //{
-        //    paymentList.ItemsSource = paymentItem;
-        //    paymentList.Items.Refresh();
-        //}
-
         public void viewSalseMenu(List<Food> paymentItem)
         {
+            foreach(Food item in paymentItem)
+            {
+                item.totalPrice = item.Price * item.Count;
+            }
+
             paymentList.ItemsSource = paymentItem;
             paymentList.Items.Refresh();
         }

@@ -37,7 +37,8 @@
                     <GridView>
                         <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }"/>
                         <GridViewColumn Header="수량" DisplayMemberBinding="{Binding Count}"/>
-                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding totalPrice}"/>
+                        <!--<GridViewColumn Header="총 금액" t-->
                     </GridView>
                 </ListView.View>
             </ListView>
