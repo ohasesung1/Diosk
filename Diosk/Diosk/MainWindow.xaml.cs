@@ -22,6 +22,8 @@ namespace Diosk
     /// </summary>
     public partial class MainWindow : Window
     {
+        TableCtrl SelectedTablectrl = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,19 +31,18 @@ namespace Diosk
             order.OnOrderComplete += Order_OnOrderComplete;
         }
 
+
         // 주문 후 테이블 정보 새로고침
         private void Order_OnOrderComplete(object sender, OrderArgs args)
         {
-            TableCtrl tablectrl = tbList.SelectedItem as TableCtrl;
-           
-
             foreach (Table list in App.TableData.lstTable)
             {
                 if (list.Id == args.tableId)
                 {
-                    tablectrl.SetTable(list);
+                    SelectedTablectrl.SetTable(list);
                 }                
             }
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -73,13 +74,22 @@ namespace Diosk
         //선택한 테이블 객체 넘겨주기, 화면 이동
         private void TbList_SelectionChanged(object sender, SelectionChangedEventArgs e)    
         {
+            if (tbList.SelectedIndex == -1)
+                return;
+
             TableCtrl tableCtrl = (tbList.SelectedItem as TableCtrl);
-            
+
+            if (tableCtrl == null)
+                return;
+
+            SelectedTablectrl = tableCtrl;
+
+
             order.SetTable(tableCtrl.GetTable());
 
             order.Visibility = Visibility.Visible;
-            
 
+            tbList.SelectedIndex = -1;
         }
 
 
@@ -91,10 +101,11 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            total.viewPrice(App.payment.totalSales);
+            total.viewSalse(App.payment.sellingPrice);
+            total.viewSalseMenu(App.payment.FoodList);
+
             total.Visibility = Visibility.Visible;
         }
-
 
     }
 }
