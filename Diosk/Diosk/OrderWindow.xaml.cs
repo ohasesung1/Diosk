@@ -79,6 +79,7 @@ namespace Diosk
 
             lvOrder.Items.Refresh();
             SettingTable();
+            SetOrderTime();
         }
 
         //주문 메뉴의 -버튼 누를때 사용하는 함수.
@@ -102,6 +103,10 @@ namespace Diosk
             {
                 lvOrder.Items.Remove(food);
             }
+            else
+            {
+                SetOrderTime();
+            }
         }
 
         //주문목록에 Food 추가하는 함수.
@@ -118,6 +123,7 @@ namespace Diosk
             lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name).Count++;
             lvOrder.Items.Refresh();
             SettingTable();
+            SetOrderTime();
         }
 
         private Food newFood(Food item)
@@ -148,6 +154,10 @@ namespace Diosk
             currentTable.TotalPrice = tempPrice;
 
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
+        }
+
+        private void SetOrderTime()
+        {
             currentTable.Time = DateTime.Now;
         }
 
@@ -183,6 +193,7 @@ namespace Diosk
                 SettingTable();
             }
         }
+
         //결제 된 item을 payment.foodlist에 저장하는 함수
         private void PaymentTodo()
         {
@@ -208,8 +219,9 @@ namespace Diosk
                 //Debug.Write(currentTable.FoodList);
                 //Debug.Write(App.payment.FoodList);
 
-                //orderAllCancel(null, null);
-                this.Visibility = Visibility.Collapsed;
+                orderAllCancel(null, null);
+                //this.Visibility = Visibility.Collapsed;
+                BackToMainWindow(null, null);
             }
         }
 
