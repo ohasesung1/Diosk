@@ -21,7 +21,7 @@
                       SelectionChanged="TbList_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" ItemHeight="150" ItemWidth="150" Margin="30"/>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="175" ItemWidth="175" Margin="40,35,0,0"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
