@@ -32,7 +32,7 @@ namespace Diosk
         public event OrderCompleteHandler OnOrderComplete;
 
         List<Food> dataSourceList = new List<Food>();
-        PaymentWin payment = new PaymentWin();
+        PaymentWin paymentWin = new PaymentWin();
 
         private Core.Table currentTable;
 
@@ -240,9 +240,10 @@ namespace Diosk
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
-                    payment.ShowDialog();
+            paymentWin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            paymentWin.ShowDialog();
 
-                    PaymentTodo();
+           PaymentTodo();
         }
 
         private void BackToMainWindow(object sender, RoutedEventArgs e)
