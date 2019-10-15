@@ -47,8 +47,6 @@ namespace Diosk
                 item.totalPrice = item.Price * item.Count;
             }
 
-            Debug.Write(App.payment.FoodList);
-
             paymentList.ItemsSource = paymentItem;
             paymentList.Items.Refresh();
         }

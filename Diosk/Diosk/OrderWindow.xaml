@@ -89,7 +89,7 @@
                 </Border>
                 <WrapPanel HorizontalAlignment="Right" Margin="0,10,20,0">
                     <Button Click="orderCancel" Content="취소" Height="35" Width="60" Margin="0,0,10,0" Background="#F12243" Foreground="White" FontSize="16" BorderThickness="0"></Button>
-                    <Button Click="orderAllCancel" Content="전체 취소" Height="35" Width="80" Background="#F12243" Foreground="White" FontSize="16" BorderThickness="0"></Button>
+                    <Button Click="checkCancel" Content="전체 취소" Height="35" Width="80" Background="#F12243" Foreground="White" FontSize="16" BorderThickness="0"></Button>
                 </WrapPanel>
             </StackPanel>
 

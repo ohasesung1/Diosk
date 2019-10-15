@@ -185,19 +185,24 @@ namespace Diosk
         }
 
         //모든 주문을 취소하는 함수.
-        public void orderAllCancel(object sender, RoutedEventArgs e)
+        public void orderAllCancel()
+        {
+            if (currentTable.FoodList != null)
+            {
+                foreach (Food item in currentTable.FoodList)
+                {
+                    item.Count = 0;
+                }
+                lvOrder.Items.Clear();
+                SettingTable();
+            }
+        }
+
+        private void checkCancel(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("모든 주문을 취소하시겠습니까?", "Check", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                if (currentTable.FoodList != null)
-                {
-                    foreach (Food item in currentTable.FoodList)
-                    {
-                        item.Count = 0;
-                    }
-                    lvOrder.Items.Clear();
-                    SettingTable();
-                }
+                orderAllCancel();
             }
         }
 
@@ -226,7 +231,7 @@ namespace Diosk
                 //Debug.Write(currentTable.FoodList);
                 //Debug.Write(App.payment.FoodList);
 
-                orderAllCancel(null, null);
+                orderAllCancel();
                 //this.Visibility = Visibility.Collapsed;
                 BackToMainWindow(null, null);
             }

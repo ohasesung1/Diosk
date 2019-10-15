@@ -49,7 +49,7 @@
         </Grid>
 
         <Grid Grid.Row="0">
-            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="메인 화면" FontSize="20" Foreground="White" Background="#F12243"/>
+            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="테이블 회면" FontSize="20" Foreground="White" Background="#F12243"/>
         </Grid>
     </Grid>
 </UserControl>
