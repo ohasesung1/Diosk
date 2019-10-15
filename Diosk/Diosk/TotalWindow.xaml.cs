@@ -30,7 +30,7 @@ namespace Diosk
             InitializeComponent();
         }
 
-        public void viewSalse(int sellingPrice)
+        public void viewSales(int sellingPrice)
         {
             totalSalse.Text = sellingPrice + "원";
         }
@@ -40,7 +40,7 @@ namespace Diosk
             this.Visibility = Visibility.Collapsed;
         }
 
-        public void viewSalseMenu(List<Food> paymentItem)
+        public void viewSalesMenu(List<Food> paymentItem)
         {
             foreach(Food item in paymentItem)
             {
@@ -55,7 +55,7 @@ namespace Diosk
 
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
-            viewSalseMenu(App.payment.FoodList);
+            viewSalesMenu(App.payment.FoodList);
         }
 
         private void LoadMenu(String category)
