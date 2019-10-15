@@ -178,19 +178,26 @@ namespace Diosk
                 lvOrder.Items.Remove(food);
                 SettingTable();
             }
+            else
+            {
+                MessageBox.Show("주문목록에서 음식을 선택해주십시오.","Warning");
+            }
         }
 
         //모든 주문을 취소하는 함수.
         public void orderAllCancel(object sender, RoutedEventArgs e)
         {
-            if (currentTable.FoodList != null)
+            if (MessageBox.Show("모든 주문을 취소하시겠습니까?", "Check", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                foreach (Food item in currentTable.FoodList)
+                if (currentTable.FoodList != null)
                 {
-                    item.Count = 0;
+                    foreach (Food item in currentTable.FoodList)
+                    {
+                        item.Count = 0;
+                    }
+                    lvOrder.Items.Clear();
+                    SettingTable();
                 }
-                lvOrder.Items.Clear();
-                SettingTable();
             }
         }
 
