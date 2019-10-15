@@ -225,18 +225,6 @@ namespace Diosk
             }
         }
 
-        //총 결제 금액 계산 함수
-        private int totalPrice()
-        {
-            int temp = 0;
-
-            foreach (Core.Table table in App.TableData.lstTable)
-            {
-                temp += table.TotalPrice;
-            }
-
-            return temp;
-        }
 
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
