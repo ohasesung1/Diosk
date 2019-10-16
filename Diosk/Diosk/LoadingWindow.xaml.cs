@@ -26,22 +26,19 @@ namespace Diosk
         {
             InitializeComponent();
 
-
-
-
             timer.Interval = TimeSpan.FromMilliseconds(0.05);
             timer.Tick += Timer_Tick;
             timer.Start();
-
-
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             Thread.Sleep(3000);
-            this.Visibility = Visibility.Hidden;
             App.TableData.Load();
             App.FoodData.load();
+
+
+            this.Visibility = Visibility.Hidden;
             MainWindow main = new MainWindow();
             main.ShowDialog();
             timer.Stop();
