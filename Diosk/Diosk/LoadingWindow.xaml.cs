@@ -10,19 +10,41 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Diosk
 {
     /// <summary>
-    /// LodingWindow.xaml에 대한 상호 작용 논리
+    /// LoadingWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LodingWindow : UserControl
+    public partial class LoadingWindow : Window
     {
-        public LodingWindow()
+        DispatcherTimer timer = new DispatcherTimer();
+        public LoadingWindow()
         {
             InitializeComponent();
+
+
+
+
+            timer.Interval = TimeSpan.FromMilliseconds(0.05);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            Thread.Sleep(3000);
+            this.Visibility = Visibility.Hidden;
+            App.TableData.Load();
+            App.FoodData.load();
+            MainWindow main = new MainWindow();
+            main.ShowDialog();
+            timer.Stop();
         }
     }
 }

@@ -43,7 +43,6 @@ namespace Diosk
         }
         private void OrderWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            App.FoodData.load();
             LoadMenu("All");
         }
 

@@ -61,7 +61,6 @@ namespace Diosk
 
         private void LoadTable()
         {
-            App.TableData.Load();
             foreach (Table table in App.TableData.lstTable)
             {
                 TableCtrl tableCtrl = new TableCtrl();
@@ -101,8 +100,8 @@ namespace Diosk
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            total.viewSalse(App.payment.sellingPrice);
-            total.viewSalseMenu(App.payment.FoodList);
+            total.viewSales(App.payment.sellingPrice);
+            total.viewSalesMenu(App.payment.FoodList);
 
             total.Visibility = Visibility.Visible;
         }
