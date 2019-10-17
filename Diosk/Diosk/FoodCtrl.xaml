@@ -6,10 +6,12 @@
              xmlns:local="clr-namespace:Diosk"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Image x:Name="FoodImage" Stretch="UniformToFill"></Image>
-        <TextBlock x:Name="tbName"></TextBlock>
-        <TextBlock x:Name="tbCount"></TextBlock>
-        <TextBlock x:Name="tbPrice"></TextBlock>
-    </StackPanel>
+    <Grid Width="120" Height="120" Background="White">
+        <StackPanel>
+            <Image x:Name="FoodImage" Stretch="UniformToFill"></Image>
+            <TextBlock x:Name="tbName"></TextBlock>
+            <TextBlock x:Name="tbCount"></TextBlock>
+            <TextBlock x:Name="tbPrice"></TextBlock>
+        </StackPanel>
+    </Grid>
 </UserControl>
