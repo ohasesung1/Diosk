@@ -12,25 +12,25 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Width" Value="90"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="26"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#F12243"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
     </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="600"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Background="#fefce7">
-            <Button Style="{StaticResource button_style}" x:Name="menu" Margin="5,35,355,0" Content="메뉴" Click="Menu_Click_1"/>
-            <Button Style="{StaticResource button_style}" x:Name="burger"  Margin="105,35,255,0" Content="버거" Click="Burger_Click"/>
-            <Button Style="{StaticResource button_style}" x:Name="side"   Margin="200,35,160,0" Content="사이드" Click="Side_Click"/>
-            <Button Style="{StaticResource button_style}" x:Name="drink" Margin="295,35,65,0" Content="음료" Click="Drink_Click"/>
-            <ListView x:Name="paymentList" Background="White" BorderThickness="5" BorderBrush="#F12243"  Height="450" Margin="0,75">
+            <Button Style="{StaticResource button_style}" x:Name="menu" Margin="10,35,0,0" Content="메뉴" Click="Menu_Click_1" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="burger"  Margin="110,35,0,0" Content="버거" Click="Burger_Click" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="side"   Margin="210,35,0,0" Content="사이드" Click="Side_Click" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="drink" Margin="310,35,0,0" Content="음료" Click="Drink_Click" HorizontalAlignment="Left"/>
+            <ListView x:Name="paymentList" Background="White" BorderThickness="3" BorderBrush="#F12243" Height="450">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }" Width="150"/>
@@ -45,11 +45,14 @@
             <Border Background="White"></Border>
             <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
             <TextBlock Text="총 매출 액:" FontSize="30" VerticalAlignment="Center" Margin="50, 0, 50, 0"/>
-            <TextBlock x:Name="totalSalse" FontSize="30" VerticalAlignment="Center" Margin="250, 0, 70, 0"/>
+            <TextBlock x:Name="totalSalse" FontSize="30" VerticalAlignment="Center" Margin="230, 0, 70, 0"/>
         </Grid>
 
-        <Grid Grid.Row="0">
-            <Button x:Name="mainWinBtn" Click="MainWinBtn_Click" Height="50" Content="테이블 회면" FontSize="20" Foreground="White" Background="#F12243"/>
+        <Grid Grid.Row="0" Background="White">
+            <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
+            <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
+            <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"></Button>
+
         </Grid>
     </Grid>
 </UserControl>

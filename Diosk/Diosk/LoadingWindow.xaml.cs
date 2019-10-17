@@ -33,7 +33,7 @@ namespace Diosk
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             App.TableData.Load();
             App.FoodData.load();
 

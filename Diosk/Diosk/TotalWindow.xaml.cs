@@ -35,7 +35,7 @@ namespace Diosk
             totalSalse.Text = sellingPrice + "원";
         }
 
-        private void MainWinBtn_Click(object sender, RoutedEventArgs e)
+        private void BackToMainWindow(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
