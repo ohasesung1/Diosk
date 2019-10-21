@@ -32,7 +32,7 @@ namespace Diosk.Core
             Boolean isConnected = false;
             try
             {
-                m_ClientSocket.Connect("10.80.162.116", 5000);
+                m_ClientSocket.Connect("10.80.162.116", 6000);
                 isConnected = true;
             }
             catch (Exception ex)
@@ -74,30 +74,38 @@ namespace Diosk.Core
             }
         }
 
-        //public void Receive(Socket client)
-        //{
-        //    try
-        //    {
-        //        // Create the state object.  
-        //        AsyncObject state = new AsyncObject(1);
-        //        state.WorkingSocket = client;
-
-        //        // Begin receiving the data from the remote device.  
-        //        client.BeginReceive(state.Buffer, 0, state.Buffer.Length, 0,
-        //            new AsyncCallback(ReceiveCallback), state);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.ToString());
-        //    }
-        //}
-
-        public void ReceiveCallback()
+        public void handleDataReceive(IAsyncResult ar)
         {
+            AsyncObject ao = (AsyncObject)ar.AsyncState;
+            Int32 recvBytes;
 
+            try
+            {
+                recvBytes = ao.WorkingSocket.EndReceive(ar);
+            }
+            catch
+            {
+                return;
+            }
+
+            if (recvBytes > 0)
+            {
+                Byte[] msgByte = new Byte[recvBytes];
+                Array.Copy(ao.Buffer, msgByte, recvBytes);
+
+                Console.WriteLine("메세지 받음: {0}", Encoding.Unicode.GetString(msgByte));
+            }
+
+            try
+            {
+                ao.WorkingSocket.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, ao);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("자료 수신 대기 도중 오류 발생! 메세지: {0}", ex.Message);
+                return;
+            }
         }
-
-        //private
 
     }
 }
