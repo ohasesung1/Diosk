@@ -13,7 +13,7 @@ namespace Diosk
 
         public List<Food> lstFood;
 
-        public void load()
+        public void Load()
         {
             if (isLoaded) return;
 

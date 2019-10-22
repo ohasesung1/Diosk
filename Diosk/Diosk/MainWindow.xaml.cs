@@ -53,7 +53,7 @@ namespace Diosk
             {
                 Interval = TimeSpan.FromMilliseconds(0.01)
             };
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
 
             LoadTable();
@@ -92,7 +92,7 @@ namespace Diosk
         }
 
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
         }

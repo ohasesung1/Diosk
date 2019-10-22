@@ -35,7 +35,7 @@ namespace Diosk
         {
             Thread.Sleep(2000);
             App.TableData.Load();
-            App.FoodData.load();
+            App.FoodData.Load();
 
 
             this.Visibility = Visibility.Hidden;
