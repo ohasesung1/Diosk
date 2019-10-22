@@ -60,6 +60,7 @@ namespace Diosk
             SettingTable();
         }
 
+        //현재 테이블을 세팅해주는 함수.
         public void SetTable(Core.Table table)
         {
             currentTable = table;
@@ -89,14 +90,14 @@ namespace Diosk
             {
                 Food food = (Food)subBtn.DataContext;
                 food.Count -= 1;
-                removeCheckFood(food);
+                RemoveCheckFood(food);
             }
 
             lvOrder.Items.Refresh();
             SettingTable();
         }
 
-        private void removeCheckFood(Food food)
+        private void RemoveCheckFood(Food food)
         {
             if (food.Count <= 0)
             {
@@ -111,21 +112,33 @@ namespace Diosk
         //주문목록에 Food 추가하는 함수.
         private void AddOrderMenu(object sender, RoutedEventArgs e)
         {
-            Food food = newFood(((ListViewItem)sender).DataContext as Food);
+            Food food = NewFood(((ListViewItem)sender).DataContext as Food);
             if (food == null) return;
 
-            if (lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name) == null)
+            if (NameSearchFood(food) == null)
             {
                 lvOrder.Items.Add(food);
             }
 
-            lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name).Count++;
+            NameSearchFood(food).Count++;
             lvOrder.Items.Refresh();
             SettingTable();
             SetOrderTime();
         }
 
-        private Food newFood(Food item)
+        //Food의 이름으로 ListView에 Food를 찾아서 리턴하는 함수.
+        private Food NameSearchFood(Food food)
+        {
+            Food item = lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name);
+            if(item == null)
+            {
+                return null;
+            }
+            return item; 
+        }
+
+        //새로운 Food를 만드는 함수.
+        private Food NewFood(Food item)
         {
             Food food = new Food();
 
@@ -155,6 +168,7 @@ namespace Diosk
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
         }
 
+        //테이블의 시간을 세팅해주는 함수.
         private void SetOrderTime()
         {
             currentTable.Time = DateTime.Now;
@@ -168,7 +182,7 @@ namespace Diosk
         }
 
         //주문 취소하는 함수.
-        private void orderCancel(object sender, RoutedEventArgs e)
+        private void OrderCancel(object sender, RoutedEventArgs e)
         {
             if (lvOrder.SelectedItem != null)
             {
@@ -184,7 +198,7 @@ namespace Diosk
         }
 
         //모든 주문을 취소하는 함수.
-        public void orderAllCancel()
+        public void OrderAllCancel()
         {
             if (currentTable.FoodList != null)
             {
@@ -197,11 +211,12 @@ namespace Diosk
             }
         }
 
-        private void checkCancel(object sender, RoutedEventArgs e)
+        //모두 취소 버튼을 누를 때 다시 한번 확인하는 함수.
+        private void CheckCancel(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("모든 주문을 취소하시겠습니까?", "Check", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                orderAllCancel();
+                OrderAllCancel();
             }
         }
 
@@ -213,7 +228,7 @@ namespace Diosk
                 App.payment.sellingPrice += currentTable.TotalPrice;
                 foreach (Food item in currentTable.FoodList)
                 {
-                    Food food = newFood(item);
+                    Food food = NewFood(item);
                     food.Count = item.Count;
                     if (App.payment.FoodList.Find(x => x.Name == food.Name) != null)
                     {
@@ -230,7 +245,7 @@ namespace Diosk
                 //Debug.Write(currentTable.FoodList);
                 //Debug.Write(App.payment.FoodList);
 
-                orderAllCancel();
+                OrderAllCancel();
                 //this.Visibility = Visibility.Collapsed;
                 BackToMainWindow(null, null);
             }
