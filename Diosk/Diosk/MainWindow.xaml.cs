@@ -45,6 +45,7 @@ namespace Diosk
 
         }
 
+        // 테이블과 현재 시간 표시
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("load MainWindow");
@@ -57,6 +58,11 @@ namespace Diosk
             timer.Start();
 
             LoadTable();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
         }
 
         private void LoadTable()
@@ -90,13 +96,6 @@ namespace Diosk
 
             tbList.SelectedIndex = -1;
         }
-
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
-        }
-
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
