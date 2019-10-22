@@ -251,13 +251,19 @@ namespace Diosk
             }
         }
 
-
         private void PaymentBtn_Click(object sender, RoutedEventArgs e)
         {
-            paymentWin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            paymentWin.ShowDialog();
+            if (currentTable.FoodList.Count != 0)
+            {
+                paymentWin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                paymentWin.ShowDialog();
 
-           PaymentTodo();
+                PaymentTodo();
+            }
+            else
+            {
+                MessageBox.Show("메뉴를 추가해주십시오.", "확인", MessageBoxButton.OK);
+            }
         }
 
         private void BackToMainWindow(object sender, RoutedEventArgs e)
