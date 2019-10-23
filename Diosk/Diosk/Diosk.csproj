@@ -176,5 +176,58 @@
   <ItemGroup>
     <Resource Include="Image\LoadingLogo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\b10.jpg" />
+    <Resource Include="Image\b6.jpg" />
+    <Resource Include="Image\b7.jpg" />
+    <Resource Include="Image\b8.jpg" />
+    <Resource Include="Image\b9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\b11.jpg" />
+    <Resource Include="Image\b12.jpg" />
+    <Resource Include="Image\b13.jpg" />
+    <Resource Include="Image\b14.jpg" />
+    <Resource Include="Image\b15.jpg" />
+    <Resource Include="Image\b16.jpg" />
+    <Resource Include="Image\b17.jpg" />
+    <Resource Include="Image\b18.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\b19.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\s10.jpg" />
+    <Resource Include="Image\s11.jpg" />
+    <Resource Include="Image\s12.jpg" />
+    <Resource Include="Image\s13.jpg" />
+    <Resource Include="Image\s14.jpg" />
+    <Resource Include="Image\s15.jpg" />
+    <Resource Include="Image\s16.jpg" />
+    <Resource Include="Image\s17.jpg" />
+    <Resource Include="Image\s18.jpg" />
+    <Resource Include="Image\s19.jpg" />
+    <Resource Include="Image\s20.jpg" />
+    <Resource Include="Image\s6.jpg" />
+    <Resource Include="Image\s7.jpg" />
+    <Resource Include="Image\s8.jpg" />
+    <Resource Include="Image\s9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\d10.jpg" />
+    <Resource Include="Image\d11.jpg" />
+    <Resource Include="Image\d12.jpg" />
+    <Resource Include="Image\d13.jpg" />
+    <Resource Include="Image\d14.jpg" />
+    <Resource Include="Image\d15.jpg" />
+    <Resource Include="Image\d16.jpg" />
+    <Resource Include="Image\d17.jpg" />
+    <Resource Include="Image\d18.jpg" />
+    <Resource Include="Image\d19.jpg" />
+    <Resource Include="Image\d6.jpg" />
+    <Resource Include="Image\d7.jpg" />
+    <Resource Include="Image\d8.jpg" />
+    <Resource Include="Image\d9.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
