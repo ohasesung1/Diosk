@@ -31,7 +31,7 @@ namespace Diosk
         public delegate void OrderCompleteHandler(Object sender, OrderArgs args);
         public event OrderCompleteHandler OnOrderComplete;
 
-        PaymentWin paymentWin = new PaymentWin();
+       
 
         private Core.Table currentTable;
 
@@ -254,10 +254,14 @@ namespace Diosk
         {
             if (currentTable.FoodList.Count != 0)
             {
+                PaymentWin paymentWin = new PaymentWin(); 
                 paymentWin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                paymentWin.ShowDialog();
-
-                PaymentTodo();
+                bool? isTodo = paymentWin.ShowDialog();
+                if(isTodo==true)
+                {
+                    PaymentTodo();
+                }
+                
             }
             else
             {

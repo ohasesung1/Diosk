@@ -31,13 +31,15 @@ namespace Diosk
         private void Card_Click(object sender, RoutedEventArgs e)
         {
             App.payment.paymentWay = PaymentWay.Card;
-            this.Hide();
+            this.DialogResult = true;
+            //this.Hide();
         }
 
         public void Cash_Click(object sender, RoutedEventArgs e)
         {
             App.payment.paymentWay = PaymentWay.Cash;
-            this.Hide();
+            this.DialogResult = true;
+            ///this.Hide();
         }
     }
 }
