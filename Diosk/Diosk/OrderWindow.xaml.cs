@@ -143,7 +143,7 @@ namespace Diosk
 
             food.Name = item.Name;
             food.Price = item.Price;
-            food.Count = 0;
+            food.Count = item.Count;
             food.ImagePath = item.ImagePath;
             food.Category = item.Category;
 
@@ -228,7 +228,6 @@ namespace Diosk
                 foreach (Food item in currentTable.FoodList)
                 {
                     Food food = NewFood(item);
-                    food.Count = item.Count;
                     if (App.payment.FoodList.Find(x => x.Name == food.Name) != null)
                     {
                         App.payment.FoodList.Find(x => x.Name == food.Name).Count += food.Count;
