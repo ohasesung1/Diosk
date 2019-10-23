@@ -48,6 +48,7 @@ namespace Diosk.Core
                 ao.WorkingSocket = m_ClientSocket;
 
                 m_ClientSocket.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, ao);
+                Receive(ao.WorkingSocket);
                 Console.WriteLine("연결 성공!");
             }
             else
@@ -66,11 +67,27 @@ namespace Diosk.Core
             try
             {
                 m_ClientSocket.BeginSend(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnSendHandler, ao);
+                Receive(ao.WorkingSocket);
                 Console.WriteLine("전송 성공");
             }
             catch(Exception ex)
             {
                 Console.WriteLine("메세지 전송중 오류 발생!", ex.Message);
+            }
+        }
+
+        public void Receive(Socket client)
+        {
+            try
+            {
+                AsyncObject ao = new AsyncObject(1);
+                ao.WorkingSocket = client;
+
+                client.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, 0, new AsyncCallback(handleDataReceive), ao);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("리시브 에러!", e.ToString());
             }
         }
 

@@ -62,7 +62,7 @@ namespace Diosk
             foreach (Food food in App.payment.FoodList)
             {
                 String food_category = food.Category.ToString();
-                if (food_category.Equals(category) || category.Equals("All"))
+                if (food_category.Equals(category))
                 {
                     salesFoods.Add(food);
                 }
