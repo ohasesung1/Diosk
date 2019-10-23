@@ -31,7 +31,6 @@ namespace Diosk
         public delegate void OrderCompleteHandler(Object sender, OrderArgs args);
         public event OrderCompleteHandler OnOrderComplete;
 
-        List<Food> dataSourceList = new List<Food>();
         PaymentWin paymentWin = new PaymentWin();
 
         private Core.Table currentTable;
@@ -297,16 +296,15 @@ namespace Diosk
 
         private void LoadMenu(String category)
         {
-            dataSourceList.Clear();
+            lvMenu.Items.Clear();
             foreach (Food food in App.FoodData.lstFood)
             {
                 String food_category = food.Category.ToString();
                 if (food_category.Equals(category) || category.Equals("All"))
                 {
-                    dataSourceList.Add(food);
+                    lvMenu.Items.Add(food);
                 }
             }
-            lvMenu.ItemsSource = dataSourceList;
             lvMenu.Items.Refresh();
         }
     }
