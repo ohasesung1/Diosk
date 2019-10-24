@@ -30,7 +30,7 @@
             <Button Style="{StaticResource button_style}" x:Name="burger"  Margin="110,35,0,0" Content="버거" Click="Burger_Click" HorizontalAlignment="Left"/>
             <Button Style="{StaticResource button_style}" x:Name="side"   Margin="210,35,0,0" Content="사이드" Click="Side_Click" HorizontalAlignment="Left"/>
             <Button Style="{StaticResource button_style}" x:Name="drink" Margin="310,35,0,0" Content="음료" Click="Drink_Click" HorizontalAlignment="Left"/>
-            <ListView x:Name="paymentList" Background="White" BorderThickness="3" BorderBrush="#F12243" Height="450">
+            <ListView x:Name="paymentList" Background="White" BorderThickness="3" BorderBrush="#F12243" Height="450" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }" Width="150"/>
