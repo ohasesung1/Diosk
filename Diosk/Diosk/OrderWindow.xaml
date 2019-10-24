@@ -69,7 +69,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Width="40" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                        <GridViewColumn Width="25" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
 
                         <GridViewColumn Width="40">
                             <GridViewColumn.CellTemplate>
