@@ -44,7 +44,7 @@ namespace Diosk
             }
         }
 
-        // 테이블과 현재 시간 표시
+        // 테이블 로딩과 현재 시간 표시
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("load MainWindow");
@@ -64,6 +64,7 @@ namespace Diosk
             clock.Content = DateTime.Now.ToString("yyyy년MM월dd일\n   hh : mm : ss");
         }
 
+        //생성된 테이블을 리스트에 추가
         private void LoadTable()
         {
             foreach (Table table in App.TableData.lstTable)
@@ -75,7 +76,7 @@ namespace Diosk
             }
         }
 
-        //선택한 테이블 객체 넘겨주기, 화면 이동
+        //선택한 테이블 객체 넘겨주기, 주문 화면 이동
         private void TbList_SelectionChanged(object sender, SelectionChangedEventArgs e)    
         {
             if (tbList.SelectedIndex == -1)
@@ -96,6 +97,7 @@ namespace Diosk
             tbList.SelectedIndex = -1;
         }
 
+        //통계화면으로 이동
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
             total.viewSales(App.payment.sellingPrice);

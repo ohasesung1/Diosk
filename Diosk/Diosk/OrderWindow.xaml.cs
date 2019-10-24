@@ -297,6 +297,7 @@ namespace Diosk
             LoadMenu("Drink");
         }
 
+        // 메뉴 전체보기or카테고리별 보기
         private void LoadMenu(String category)
         {
             lvMenu.Items.Clear();
