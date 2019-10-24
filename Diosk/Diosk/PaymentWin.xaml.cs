@@ -39,7 +39,7 @@ namespace Diosk
         {
             App.payment.paymentWay = PaymentWay.Cash;
             this.DialogResult = true;
-            ///this.Hide();
+            //this.Hide();
         }
     }
 }

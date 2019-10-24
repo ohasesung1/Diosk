@@ -30,16 +30,19 @@ namespace Diosk
             InitializeComponent();
         }
 
+        //총 매출 금액 보여주는 함수
         public void viewSales(int sellingPrice)
         {
             totalSalse.Text = sellingPrice + "원";
         }
 
+        //메인으로 돌아가는 함수
         private void BackToMainWindow(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
 
+        //결제 된 메뉴 리스트 보여주는 함수
         public void viewSalesMenu(List<Food> paymentItem)
         {
             foreach(Food item in paymentItem)
@@ -56,6 +59,7 @@ namespace Diosk
             viewSalesMenu(App.payment.FoodList);
         }
 
+        //카테고리 별로 결제된 메뉴 보여주는 함수
         private void LoadMenu(String category)
         {
             salesFoods.Clear();

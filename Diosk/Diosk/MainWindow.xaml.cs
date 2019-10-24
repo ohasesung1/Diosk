@@ -42,7 +42,6 @@ namespace Diosk
                     SelectedTablectrl.SetTable(list);
                 }                
             }
-
         }
 
         // 테이블과 현재 시간 표시
@@ -104,6 +103,5 @@ namespace Diosk
 
             total.Visibility = Visibility.Visible;
         }
-
     }
 }
