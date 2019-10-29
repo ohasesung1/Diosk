@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.ComponentModel;
 
 namespace Diosk
 {
@@ -23,10 +24,16 @@ namespace Diosk
     public partial class MainWindow : Window
     {
         TableCtrl SelectedTablectrl = null;
+        serverClient client = new serverClient();
 
         public MainWindow()
         {
             InitializeComponent();
+            int isConnected = client.ConnectServer();
+            if(isConnected == 0)
+            {
+                MessageBox.Show("서버 연결 실패!");
+            }
             this.Loaded += MainWindow_Loaded;
             order.OnOrderComplete += Order_OnOrderComplete;
         }
@@ -42,6 +49,11 @@ namespace Diosk
                     SelectedTablectrl.SetTable(list);
                 }                
             }
+        }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
         }
 
         // 테이블 로딩과 현재 시간 표시
@@ -102,6 +114,8 @@ namespace Diosk
         {
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
+            String sendPrice = App.payment.sellingPrice.ToString();
+            client.SendMessage(sendPrice);
 
             total.Visibility = Visibility.Visible;
         }

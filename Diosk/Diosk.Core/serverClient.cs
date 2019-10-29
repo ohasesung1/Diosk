@@ -8,7 +8,7 @@ using System.Net.Sockets;
 
 namespace Diosk.Core
 {
-    class serverClient
+    public class serverClient
     {
         public class AsyncObject
         {
@@ -20,19 +20,19 @@ namespace Diosk.Core
             }
         }
 
-        private Boolean g_Connected;
+        //private Boolean g_Connected;
         private Socket m_ClientSocket = null;
         private AsyncCallback m_fnReceiveHandler;
         private AsyncCallback m_fnSendHandler;
 
-        public void ConnectServer()
+        public int ConnectServer()
         {
             m_ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
 
             Boolean isConnected = false;
             try
             {
-                m_ClientSocket.Connect("10.80.162.116", 6000);
+                m_ClientSocket.Connect("10.80.162.116", 8080);
                 isConnected = true;
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace Diosk.Core
                 isConnected = false;
             }
 
-            g_Connected = isConnected;
+            //g_Connected = isConnected;
 
             if(isConnected)
             {
@@ -50,14 +50,16 @@ namespace Diosk.Core
                 m_ClientSocket.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, ao);
                 Receive(ao.WorkingSocket);
                 Console.WriteLine("연결 성공!");
+                return 1;
             }
             else
             {
                 Console.WriteLine("연결 실패!");
+                return 0;
             }
         }
 
-        public void SendMessage(String message)
+        public int SendMessage(String message)
         {
             AsyncObject ao = new AsyncObject(1);
 
@@ -69,10 +71,12 @@ namespace Diosk.Core
                 m_ClientSocket.BeginSend(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnSendHandler, ao);
                 Receive(ao.WorkingSocket);
                 Console.WriteLine("전송 성공");
+                return 1;
             }
             catch(Exception ex)
             {
                 Console.WriteLine("메세지 전송중 오류 발생!", ex.Message);
+                return 0;
             }
         }
 
@@ -123,6 +127,5 @@ namespace Diosk.Core
                 return;
             }
         }
-
     }
 }
