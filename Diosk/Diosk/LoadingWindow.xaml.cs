@@ -41,7 +41,6 @@ namespace Diosk
             this.Visibility = Visibility.Hidden;
             MainWindow main = new MainWindow();
             main.ShowDialog();
-            //login.Visibility = Visibility.Visible;
             timer.Stop();
         }
     }

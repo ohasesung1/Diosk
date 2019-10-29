@@ -8,6 +8,5 @@
         Title="LoadingWindow" Height="800" Width="450" ResizeMode="NoResize">
     <Grid Background="#fefce7">
         <Image Source="/Image/LoadingLogo.jpg"/>
-        <local:LoginWindow x:Name="login" Visibility="Collapsed"/>
     </Grid>
 </Window>

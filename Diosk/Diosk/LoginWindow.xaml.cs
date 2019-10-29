@@ -35,17 +35,19 @@ namespace Diosk
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            // MainWindow 유저 컨트롤로 바꾸면 수정할 것
-            // MainWindow main = new MainWindow();
-            //main.ShowDialog();
+            String Id = id.Text;
             int isSuccess = client.SendMessage(id.Text);
             if(isSuccess == 0)
             {
                 MessageBox.Show("전송 실패!");
             }
-            else
+            else if(Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
             {
                 this.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MessageBox.Show("아이디가 틀렸습니다");
             }
         }
     }
