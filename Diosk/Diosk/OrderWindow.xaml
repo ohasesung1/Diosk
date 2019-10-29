@@ -17,6 +17,21 @@
         <Style x:Key="doubleClick" TargetType="{x:Type ListViewItem}">
             <EventSetter Event="MouseDoubleClick" Handler="AddOrderMenu"></EventSetter>
         </Style>
+        <Style x:Key="CategoryButton" TargetType="Button">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#F12243"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="OrderButton" TargetType="Button">
+            <Setter Property="Background" Value="#F12243"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -31,10 +46,10 @@
             <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"></Button>
         </Grid>
         <Grid Grid.Row="1" Background="#fefce7">
-            <Button Content="전체" Click="AllButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="20,10,0,0" BorderThickness="0"/>
-            <Button Content="버거" Click="BurgerButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="120,10,0,0" BorderThickness="0"/>
-            <Button Content="사이드" Click="SideButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="220,10,0,0" BorderThickness="0"/>
-            <Button Content="음료" Click="DrinkButton" Width="90" Height="40" Background="#F12243" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White" FontSize="26" Margin="320,10,0,0" BorderThickness="0"/>
+            <Button Content="전체" Click="AllButton" Margin="20,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="버거" Click="BurgerButton" Margin="120,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="사이드" Click="SideButton" Margin="220,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="음료" Click="DrinkButton" Margin="320,10,0,0" Style="{StaticResource CategoryButton}"/>
             <ListView ItemContainerStyle="{StaticResource doubleClick}" BorderThickness="3" BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20,45,20,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -88,8 +103,8 @@
                     <Image x:Name="selectFoodImg" Stretch="UniformToFill"></Image>
                 </Border>
                 <WrapPanel HorizontalAlignment="Right" Margin="0,10,20,0">
-                    <Button Click="OrderCancel" Content="취소" Height="35" Width="60" Margin="0,0,10,0" Background="#F12243" Foreground="White" FontSize="16" BorderThickness="0"></Button>
-                    <Button Click="CheckCancel" Content="전체 취소" Height="35" Width="80" Background="#F12243" Foreground="White" FontSize="16" BorderThickness="0"></Button>
+                    <Button Click="OrderCancel" Content="취소" Width="60" Height="35" Margin="0,0,10,0" FontSize="16" Style="{StaticResource OrderButton}"></Button>
+                    <Button Click="CheckCancel" Content="전체 취소" Width="80" Height="35" FontSize="16" Style="{StaticResource OrderButton}"></Button>
                 </WrapPanel>
             </StackPanel>
 
@@ -98,7 +113,7 @@
             <Border BorderThickness="3" BorderBrush="#F12243" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="230" Margin="20,0,0,5" Background="White">
                 <TextBlock x:Name="TbTotalPrice" Text="총계 : " FontSize="25" VerticalAlignment="Center"></TextBlock>
             </Border>
-            <Button x:Name="PaymentBtn" Content="결제" Height="45" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,5" Click="PaymentBtn_Click" Background="#F12243" Foreground="White" FontSize="28" BorderThickness="0"></Button>
+            <Button x:Name="PaymentBtn" Content="결제" Width="150" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,5" FontSize="28" Style="{StaticResource OrderButton}" Click="PaymentBtn_Click"></Button>
         </Grid>
     </Grid>
 </UserControl>
