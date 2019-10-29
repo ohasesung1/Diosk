@@ -38,10 +38,10 @@ namespace Diosk
             App.FoodData.Load();
 
 
-            //this.Visibility = Visibility.Hidden;
-            //MainWindow main = new MainWindow();
-            //main.ShowDialog();
-            login.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Hidden;
+            MainWindow main = new MainWindow();
+            main.ShowDialog();
+            //login.Visibility = Visibility.Visible;
             timer.Stop();
         }
     }

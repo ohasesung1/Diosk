@@ -29,8 +29,9 @@ namespace Diosk
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             // MainWindow 유저 컨트롤로 바꾸면 수정할 것
-            MainWindow main = new MainWindow();
-            main.ShowDialog();
+            // MainWindow main = new MainWindow();
+            //main.ShowDialog();
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

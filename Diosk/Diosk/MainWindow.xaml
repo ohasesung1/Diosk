@@ -33,6 +33,7 @@
             <Button x:Name="Statistic" Width="150" Height="60" Content="통계" FontSize="30" Background="#F12243" Foreground="White" HorizontalAlignment="Right" Margin="0,0,20,0" BorderThickness="0" Click="Statistic_Click"/>
         </Grid>
         <Grid Grid.RowSpan="3">
+            <local:LoginWindow x:Name="login" Visibility="Visible"/>
             <local:OrderWindow x:Name="order" Visibility="Collapsed"/>
             <local:TotalWindow x:Name="total" Visibility="Collapsed"></local:TotalWindow>
         </Grid>
