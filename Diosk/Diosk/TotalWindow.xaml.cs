@@ -25,6 +25,7 @@ namespace Diosk
     {
         List<Food> salesFoods = new List<Food>();
 
+
         public TotalWindow()
         {
             InitializeComponent();

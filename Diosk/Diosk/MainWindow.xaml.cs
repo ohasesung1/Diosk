@@ -29,11 +29,6 @@ namespace Diosk
         public MainWindow()
         {
             InitializeComponent();
-            int isConnected = client.ConnectServer();
-            if(isConnected == 0)
-            {
-                MessageBox.Show("서버 연결 실패!");
-            }
             this.Loaded += MainWindow_Loaded;
             order.OnOrderComplete += Order_OnOrderComplete;
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Diosk.Core;
 
 namespace Diosk
 {
@@ -20,10 +21,16 @@ namespace Diosk
     /// </summary>
     public partial class LoginWindow : UserControl
     {
+        serverClient client = new serverClient();
 
         public LoginWindow()
         {
             InitializeComponent();
+            int isConneted = client.ConnectServer();
+            if(isConneted == 0)
+            {
+                MessageBox.Show("서버 연결 실패!");
+            }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -31,7 +38,15 @@ namespace Diosk
             // MainWindow 유저 컨트롤로 바꾸면 수정할 것
             // MainWindow main = new MainWindow();
             //main.ShowDialog();
-            this.Visibility = Visibility.Collapsed;
+            int isSuccess = client.SendMessage(id.Text);
+            if(isSuccess == 0)
+            {
+                MessageBox.Show("전송 실패!");
+            }
+            else
+            {
+                this.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
