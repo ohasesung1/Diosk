@@ -110,9 +110,17 @@ namespace Diosk
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
             String sendPrice = App.payment.sellingPrice.ToString();
-            client.SendMessage(sendPrice);
+            int isSuccess = client.SendMessage(sendPrice);
+            if(isSuccess == 0)
+            {
+                MessageBox.Show("통계 전송 실패!");
+            }
+            else
+            {
+                 total.Visibility = Visibility.Visible;
+            }
 
-            total.Visibility = Visibility.Visible;
+           
         }
     }
 }

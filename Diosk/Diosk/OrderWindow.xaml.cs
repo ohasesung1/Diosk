@@ -30,7 +30,7 @@ namespace Diosk
     {
         public delegate void OrderCompleteHandler(Object sender, OrderArgs args);
         public event OrderCompleteHandler OnOrderComplete;
-
+        serverClient client = new serverClient();
        
 
         private Core.Table currentTable;
@@ -225,7 +225,15 @@ namespace Diosk
             if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
                 App.payment.sellingPrice += currentTable.TotalPrice;
-                foreach (Food item in currentTable.FoodList)
+                String currentTablePrice = currentTable.TotalPrice.ToString();
+                int isSuccess = client.SendMessage(currentTablePrice);
+                if(isSuccess == 0)
+                {
+                    MessageBox.Show("서버 전송 실패!");
+                }
+                else
+                {
+                   foreach (Food item in currentTable.FoodList)
                 {
                     Food food = NewFood(item);
                     if (App.payment.FoodList.Find(x => x.Name == food.Name) != null)
@@ -240,6 +248,8 @@ namespace Diosk
 
                 OrderAllCancel();
                 BackToMainWindow(null, null);
+                }
+
             }
         }
 
