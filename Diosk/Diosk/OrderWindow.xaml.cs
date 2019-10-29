@@ -114,19 +114,19 @@ namespace Diosk
             Food food = NewFood(((ListViewItem)sender).DataContext as Food);
             if (food == null) return;
 
-            if (NameSearchFood(food) == null)
+            if (OrderFindNameFood(food) == null)
             {
                 lvOrder.Items.Add(food);
             }
 
-            NameSearchFood(food).Count++;
+            OrderFindNameFood(food).Count++;
             lvOrder.Items.Refresh();
             SettingTable();
             SetOrderTime();
         }
 
         //Food의 이름으로 ListView에 Food를 찾아서 리턴하는 함수.
-        private Food NameSearchFood(Food food)
+        private Food OrderFindNameFood(Food food)
         {
             Food item = lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name);
             if(item == null)
@@ -197,7 +197,7 @@ namespace Diosk
         }
 
         //모든 주문을 취소하는 함수.
-        public void OrderAllCancel()
+        private void OrderAllCancel()
         {
             if (currentTable.FoodList != null)
             {
@@ -238,13 +238,7 @@ namespace Diosk
                     }
                 }
 
-                //Debug.Write(lvMenu.Items);
-                //Debug.Write(lvOrder.Items);
-                //Debug.Write(currentTable.FoodList);
-                //Debug.Write(App.payment.FoodList);
-
                 OrderAllCancel();
-                //this.Visibility = Visibility.Collapsed;
                 BackToMainWindow(null, null);
             }
         }
