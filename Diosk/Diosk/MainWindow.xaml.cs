@@ -109,6 +109,7 @@ namespace Diosk
         {
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
+            client.ConnectServer();
             String sendPrice = App.payment.sellingPrice.ToString();
             int isSuccess = client.SendMessage(sendPrice);
             if(isSuccess == 0)

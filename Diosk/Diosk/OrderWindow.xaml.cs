@@ -225,6 +225,7 @@ namespace Diosk
             if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
                 App.payment.sellingPrice += currentTable.TotalPrice;
+                client.ConnectServer();
                 String currentTablePrice = currentTable.TotalPrice.ToString();
                 int isSuccess = client.SendMessage(currentTablePrice);
                 if(isSuccess == 0)
