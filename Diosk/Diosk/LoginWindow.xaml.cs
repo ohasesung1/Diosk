@@ -22,6 +22,8 @@ namespace Diosk
     public partial class LoginWindow : UserControl
     {
         serverClient client = new serverClient();
+        public delegate void LoginCompleteHandler(Object sender, OrderArgs args);
+        public event LoginCompleteHandler OnLoginComplete;
 
         public LoginWindow()
         {
@@ -44,6 +46,7 @@ namespace Diosk
             }
             else if(Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
             {
+                OnLoginComplete(this, null);
                 this.Visibility = Visibility.Collapsed;
             }
             else

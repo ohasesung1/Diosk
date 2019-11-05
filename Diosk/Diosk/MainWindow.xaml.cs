@@ -31,6 +31,13 @@ namespace Diosk
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
             order.OnOrderComplete += Order_OnOrderComplete;
+            login.OnLoginComplete += Login_OnLoginComplete;
+        }
+
+        private void Login_OnLoginComplete(object sender, OrderArgs args)
+        {
+            String LoginTime = DateTime.Now.ToString("hh : mm : ss");
+            loginTime.Text = "  최근접속시간\n   " + LoginTime;
         }
 
 

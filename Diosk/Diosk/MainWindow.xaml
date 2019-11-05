@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TextBox>최근접속시간 표시</TextBox>
+            <TextBox x:Name="loginTime" FontSize="14">최근접속시간 표시</TextBox>
             <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
             <Button BorderBrush="#f12243" BorderThickness="2" Width="60" Height="30" HorizontalAlignment="Right"  Margin="0,0,15,0" Background="White" Click="LogoutButton_Click">로그아웃</Button>
             <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
