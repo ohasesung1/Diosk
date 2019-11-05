@@ -10,11 +10,11 @@ namespace Diosk.Core
 {
     public class serverClient
     {
-        public class AsyncObject
+        public class clientObject
         {
             public Byte[] Buffer;
             public Socket WorkingSocket;
-            public AsyncObject(Int32 bufferSize)
+            public clientObject(Int32 bufferSize)
             {
                 this.Buffer = new Byte[bufferSize];
             }
@@ -44,11 +44,11 @@ namespace Diosk.Core
 
             if(isConnected)
             {
-                AsyncObject ao = new AsyncObject(1);
-                ao.WorkingSocket = m_ClientSocket;
+                clientObject co = new clientObject(1);
+                co.WorkingSocket = m_ClientSocket;
 
-                m_ClientSocket.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, ao);
-                Receive(ao.WorkingSocket);
+                m_ClientSocket.BeginReceive(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, co);
+                Receive(co.WorkingSocket);
                 Console.WriteLine("연결 성공!");
                 return 1;
             }
@@ -61,15 +61,15 @@ namespace Diosk.Core
 
         public int SendMessage(String message)
         {
-            AsyncObject ao = new AsyncObject(1);
+            clientObject co = new clientObject(1);
 
-            ao.Buffer = Encoding.UTF8.GetBytes(message);
-            ao.WorkingSocket = m_ClientSocket;
+            co.Buffer = Encoding.UTF8.GetBytes(message);
+            co.WorkingSocket = m_ClientSocket;
 
             try
             {
-                m_ClientSocket.BeginSend(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnSendHandler, ao);
-                Receive(ao.WorkingSocket);
+                m_ClientSocket.BeginSend(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnSendHandler, co);
+                Receive(co.WorkingSocket);
                 Console.WriteLine("전송 성공");
                 return 1;
             }
@@ -84,10 +84,10 @@ namespace Diosk.Core
         {
             try
             {
-                AsyncObject ao = new AsyncObject(1);
-                ao.WorkingSocket = client;
+                clientObject co = new clientObject(1);
+                co.WorkingSocket = client;
 
-                client.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, 0, new AsyncCallback(handleDataReceive), ao);
+                client.BeginReceive(co.Buffer, 0, co.Buffer.Length, 0, new AsyncCallback(handleDataReceive), co);
             }
             catch (Exception e)
             {
@@ -97,12 +97,12 @@ namespace Diosk.Core
 
         public void handleDataReceive(IAsyncResult ar)
         {
-            AsyncObject ao = (AsyncObject)ar.AsyncState;
+            clientObject co = (clientObject)ar.AsyncState;
             Int32 recvBytes;
 
             try
             {
-                recvBytes = ao.WorkingSocket.EndReceive(ar);
+                recvBytes = co.WorkingSocket.EndReceive(ar);
             }
             catch
             {
@@ -112,14 +112,14 @@ namespace Diosk.Core
             if (recvBytes > 0)
             {
                 Byte[] msgByte = new Byte[recvBytes];
-                Array.Copy(ao.Buffer, msgByte, recvBytes);
+                Array.Copy(co.Buffer, msgByte, recvBytes);
 
                 Console.WriteLine("메세지 받음: {0}", Encoding.Unicode.GetString(msgByte));
             }
 
             try
             {
-                ao.WorkingSocket.BeginReceive(ao.Buffer, 0, ao.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, ao);
+                co.WorkingSocket.BeginReceive(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, co);
             }
             catch (Exception ex)
             {
