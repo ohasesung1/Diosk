@@ -109,7 +109,6 @@ namespace Diosk
         {
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
-            client.ConnectServer();
             String sendPrice = App.payment.sellingPrice.ToString();
             int isSuccess = client.SendMessage(sendPrice);
             if(isSuccess == 0)
@@ -122,6 +121,11 @@ namespace Diosk
             }
 
            
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            login.Visibility = Visibility.Visible;
         }
     }
 }

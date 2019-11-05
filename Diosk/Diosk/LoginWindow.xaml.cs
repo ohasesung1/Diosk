@@ -26,6 +26,7 @@ namespace Diosk
         public LoginWindow()
         {
             InitializeComponent();
+
             int isConneted = client.ConnectServer();
             if(isConneted == 0)
             {
