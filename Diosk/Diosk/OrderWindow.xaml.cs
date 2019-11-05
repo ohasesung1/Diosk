@@ -125,7 +125,7 @@ namespace Diosk
             SetOrderTime();
         }
 
-        //Food의 이름으로 ListView에 Food를 찾아서 리턴하는 함수.
+        //Food의 이름으로 lvOrder ListView에 Food를 찾아서 리턴하는 함수.
         private Food OrderFindNameFood(Food food)
         {
             Food item = lvOrder.Items.Cast<Food>().ToList<Food>().Find(x => x.Name == food.Name);
@@ -155,15 +155,29 @@ namespace Diosk
         {
             List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
 
-            int tempPrice = 0;
+            currentTable.FoodList = list;
+            currentTable.TotalPrice = GetTableTotalPrice();
+
+            SetTotalPriceText();
+        }
+
+        //현재 테이블의 총계를 리턴하는 함수.
+        private int GetTableTotalPrice()
+        {
+            int temp = 0;
+            List<Food> list = lvOrder.Items.Cast<Food>().ToList<Food>();
+
             foreach (Food item in list)
             {
-                tempPrice += item.Price * item.Count;
+                temp += item.Price * item.Count;
             }
 
-            currentTable.FoodList = list;
-            currentTable.TotalPrice = tempPrice;
+            return temp;
+        }
 
+        //총계의 텍스트를 갱신해주는 함수.
+        private void SetTotalPriceText()
+        {
             TbTotalPrice.Text = "총계 : " + currentTable.TotalPrice.ToString();
         }
 
