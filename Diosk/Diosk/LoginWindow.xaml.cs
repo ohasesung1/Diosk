@@ -36,7 +36,7 @@ namespace Diosk
             }
         }
 
-        public void setLogoutTime(object sender, RoutedEventArgs e)
+        public void SetLogoutTime(object sender, RoutedEventArgs e)
         {
             String LogoutTime = DateTime.Now.ToString("hh : mm : ss");
             logoutTime.Content = "  최종접속시간\n   " + LogoutTime;

@@ -31,10 +31,10 @@ namespace Diosk
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
             order.OnOrderComplete += Order_OnOrderComplete;
-            login.OnLoginComplete += Login_OnLoginComplete;
+            login.OnLoginComplete += SetLoginTime;
         }
 
-        private void Login_OnLoginComplete(object sender, OrderArgs args)
+        private void SetLoginTime(object sender, OrderArgs args)
         {
             String LoginTime = DateTime.Now.ToString("hh : mm : ss");
             loginTime.Content = "  최근접속시간\n   " + LoginTime;
@@ -133,7 +133,7 @@ namespace Diosk
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            login.setLogoutTime(this, null);
+            login.SetLogoutTime(this, null);
             login.Visibility = Visibility.Visible;
         }
     }
