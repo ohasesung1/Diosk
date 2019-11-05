@@ -10,45 +10,28 @@ namespace Diosk.Core
 {
     public class serverClient
     {
-        public class clientObject
-        {
-            public Byte[] Buffer;
-            public Socket WorkingSocket;
-            public clientObject(Int32 bufferSize)
-            {
-                this.Buffer = new Byte[bufferSize];
-            }
-        }
-
-        //private Boolean g_Connected;
-        private Socket m_ClientSocket = null;
-        private AsyncCallback m_fnReceiveHandler;
-        private AsyncCallback m_fnSendHandler;
+        public Byte[] RecvBuffer = new Byte[100];
+        private Socket workingSocket = null;
 
         public int ConnectServer()
         {
-            m_ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            workingSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
 
             Boolean isConnected = false;
             try
             {
-                m_ClientSocket.Connect("10.80.162.116", 8080);
+                workingSocket.Connect("10.80.162.116", 8000);
                 isConnected = true;
             }
             catch (Exception ex)
             {
                 isConnected = false;
+                Console.WriteLine(ex.Message);
             }
-
-            //g_Connected = isConnected;
 
             if(isConnected)
             {
-                clientObject co = new clientObject(1);
-                co.WorkingSocket = m_ClientSocket;
-
-                m_ClientSocket.BeginReceive(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, co);
-                Receive(co.WorkingSocket);
+                ReceiveCallback(workingSocket);
                 Console.WriteLine("연결 성공!");
                 return 1;
             }
@@ -61,15 +44,11 @@ namespace Diosk.Core
 
         public int SendMessage(String message)
         {
-            clientObject co = new clientObject(1);
-
-            co.Buffer = Encoding.UTF8.GetBytes(message);
-            co.WorkingSocket = m_ClientSocket;
-
             try
             {
-                m_ClientSocket.BeginSend(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnSendHandler, co);
-                Receive(co.WorkingSocket);
+                byte[] buffer = Encoding.UTF8.GetBytes(message);
+                workingSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, null, null);
+                ReceiveCallback(workingSocket);
                 Console.WriteLine("전송 성공");
                 return 1;
             }
@@ -80,14 +59,12 @@ namespace Diosk.Core
             }
         }
 
-        public void Receive(Socket client)
+        public void ReceiveCallback(Socket client)
         {
             try
             {
-                clientObject co = new clientObject(1);
-                co.WorkingSocket = client;
-
-                client.BeginReceive(co.Buffer, 0, co.Buffer.Length, 0, new AsyncCallback(handleDataReceive), co);
+                client.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(handleDataReceive), client);
+                Console.WriteLine(RecvBuffer);
             }
             catch (Exception e)
             {
@@ -97,29 +74,28 @@ namespace Diosk.Core
 
         public void handleDataReceive(IAsyncResult ar)
         {
-            clientObject co = (clientObject)ar.AsyncState;
-            Int32 recvBytes;
+            int received;
 
             try
             {
-                recvBytes = co.WorkingSocket.EndReceive(ar);
+                received = workingSocket.EndReceive(ar);
             }
             catch
             {
                 return;
             }
 
-            if (recvBytes > 0)
+            if (received > 0)
             {
-                Byte[] msgByte = new Byte[recvBytes];
-                Array.Copy(co.Buffer, msgByte, recvBytes);
+                byte[] recBuf = new byte[received];
+                Array.Copy(RecvBuffer, recBuf, received);
 
-                Console.WriteLine("메세지 받음: {0}", Encoding.Unicode.GetString(msgByte));
+                Console.WriteLine("메세지 받음: {0}", Encoding.UTF8.GetString(recBuf));
             }
 
             try
             {
-                co.WorkingSocket.BeginReceive(co.Buffer, 0, co.Buffer.Length, SocketFlags.None, m_fnReceiveHandler, co);
+                workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, SocketFlags.None, null, null);
             }
             catch (Exception ex)
             {

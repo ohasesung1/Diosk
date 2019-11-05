@@ -127,8 +127,6 @@ namespace Diosk
             {
                  total.Visibility = Visibility.Visible;
             }
-
-           
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
