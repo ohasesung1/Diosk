@@ -37,7 +37,7 @@ namespace Diosk
         private void Login_OnLoginComplete(object sender, OrderArgs args)
         {
             String LoginTime = DateTime.Now.ToString("hh : mm : ss");
-            loginTime.Text = "  최근접속시간\n   " + LoginTime;
+            loginTime.Content = "  최근접속시간\n   " + LoginTime;
         }
 
 
@@ -127,10 +127,13 @@ namespace Diosk
             {
                  total.Visibility = Visibility.Visible;
             }
+
+           
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            login.setLogoutTime(this, null);
             login.Visibility = Visibility.Visible;
         }
     }

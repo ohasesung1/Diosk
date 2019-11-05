@@ -36,6 +36,12 @@ namespace Diosk
             }
         }
 
+        public void setLogoutTime(object sender, RoutedEventArgs e)
+        {
+            String LogoutTime = DateTime.Now.ToString("hh : mm : ss");
+            logoutTime.Content = "  최종접속시간\n   " + LogoutTime;
+        }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             String Id = id.Text;
