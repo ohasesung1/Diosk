@@ -33,6 +33,7 @@ namespace Diosk
         public void SetLogoutTime(object sender, RoutedEventArgs e)
         {
             String LogoutTime = DateTime.Now.ToString("hh : mm : ss");
+            logoutTime.Content = "  최종접속시간\n   " + LogoutTime;
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -52,6 +53,7 @@ namespace Diosk
             else if(Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
             {
                 OnLoginComplete(this, null);
+                id.Text = "";
                 this.Visibility = Visibility.Collapsed;
             }
             else
