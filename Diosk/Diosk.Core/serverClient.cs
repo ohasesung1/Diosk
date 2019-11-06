@@ -18,9 +18,10 @@ namespace Diosk.Core
             workingSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
 
             Boolean isConnected = false;
+
             try
             {
-                workingSocket.Connect("10.80.162.116", 8000);
+                workingSocket.Connect("10.80.162.116", 6000);
                 isConnected = true;
             }
             catch (Exception ex)
