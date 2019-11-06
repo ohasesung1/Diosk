@@ -28,22 +28,21 @@ namespace Diosk
         public LoginWindow()
         {
             InitializeComponent();
-
-            int isConneted = client.ConnectServer();
-            if(isConneted == 0)
-            {
-                MessageBox.Show("서버 연결 실패!");
-            }
         }
 
         public void SetLogoutTime(object sender, RoutedEventArgs e)
         {
             String LogoutTime = DateTime.Now.ToString("hh : mm : ss");
-            logoutTime.Content = "  최종접속시간\n   " + LogoutTime;
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            int isConneted = client.ConnectServer();
+            if (isConneted == 0)
+            {
+                MessageBox.Show("서버 연결 실패!");
+            }
+
             String Id = id.Text;
             int isSuccess = client.SendMessage(id.Text);
             if(isSuccess == 0)
