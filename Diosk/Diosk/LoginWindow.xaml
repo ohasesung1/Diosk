@@ -15,7 +15,7 @@
         </Style>
     </UserControl.Resources>
     <Grid Background="#fefce7">
-        <Label x:Name="logoutTime" FontSize="14">최종시간</Label>
+        <Label x:Name="logoutTime" FontSize="14" Content="  최종접속시간"/>
         <Image Source="/Image/LoadingLogo.jpg" VerticalAlignment="Top" Width="200"/>
         <TextBox x:Name="id" Width="320" Height="80" FontSize="28"></TextBox>
         <Button Width="320" Height="80" Margin="0,200,0,0" Style="{StaticResource ButtonStyle}" Click="LoginButton_Click">로그인</Button>

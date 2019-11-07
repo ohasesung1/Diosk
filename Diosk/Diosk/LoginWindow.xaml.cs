@@ -34,6 +34,7 @@ namespace Diosk
         {
             String LogoutTime = DateTime.Now.ToString("hh : mm : ss");
             logoutTime.Content = "  최종접속시간\n   " + LogoutTime;
+            MessageBox.Show("로그아웃하셨습니다.");
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
