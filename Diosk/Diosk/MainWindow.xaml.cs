@@ -53,11 +53,6 @@ namespace Diosk
             }
         }
 
-        public void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            e.Cancel = true;
-        }
-
         // 테이블 로딩과 현재 시간 표시
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
