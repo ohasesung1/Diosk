@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-
+//재배포 금지!!
 namespace Diosk.Core
 {
     public class serverClient
@@ -32,7 +32,7 @@ namespace Diosk.Core
 
             if(isConnected)
             {
-                ReceiveMessage(workingSocket);
+                ReceiveMessage();
                 Console.WriteLine("연결 성공!");
                 return 1;
             }
@@ -49,7 +49,7 @@ namespace Diosk.Core
             {
                 byte[] buffer = Encoding.UTF8.GetBytes(message);
                 workingSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, null, null);
-                ReceiveMessage(workingSocket);
+                ReceiveMessage();
                 Console.WriteLine("전송 성공");
                 return 1;
             }
@@ -60,11 +60,11 @@ namespace Diosk.Core
             }
         }
 
-        public void ReceiveMessage(Socket client)
+        public void ReceiveMessage()
         {
             try
             {
-                client.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(ReceiveMessageCallback), client);
+                workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(ReceiveMessageCallback), workingSocket);
                 Console.WriteLine(RecvBuffer);
             }
             catch (Exception e)
