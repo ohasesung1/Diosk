@@ -32,7 +32,7 @@ namespace Diosk.Core
 
             if(isConnected)
             {
-                ReceiveCallback(workingSocket);
+                ReceiveMessage(workingSocket);
                 Console.WriteLine("연결 성공!");
                 return 1;
             }
@@ -49,7 +49,7 @@ namespace Diosk.Core
             {
                 byte[] buffer = Encoding.UTF8.GetBytes(message);
                 workingSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, null, null);
-                ReceiveCallback(workingSocket);
+                ReceiveMessage(workingSocket);
                 Console.WriteLine("전송 성공");
                 return 1;
             }
@@ -60,20 +60,21 @@ namespace Diosk.Core
             }
         }
 
-        public void ReceiveCallback(Socket client)
+        public void ReceiveMessage(Socket client)
         {
             try
             {
-                client.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(handleDataReceive), client);
+                client.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(ReceiveMessageCallback), client);
                 Console.WriteLine(RecvBuffer);
             }
             catch (Exception e)
             {
                 Console.WriteLine("리시브 에러!", e.ToString());
+                throw e;
             }
         }
 
-        public void handleDataReceive(IAsyncResult ar)
+        public void ReceiveMessageCallback(IAsyncResult ar)
         {
             int received;
 
