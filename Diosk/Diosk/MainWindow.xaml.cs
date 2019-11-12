@@ -24,7 +24,7 @@ namespace Diosk
     public partial class MainWindow : Window
     {
         TableCtrl SelectedTablectrl = null;
-        serverClient client = new serverClient();
+        //serverClient client = new serverClient();
 
         public MainWindow()
         {
@@ -111,19 +111,9 @@ namespace Diosk
         {
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
-            client.ConnectServer();
             String sendPrice = App.payment.sellingPrice.ToString();
-            int isSuccess = client.SendMessage(sendPrice);
-            if(isSuccess == 0)
-            {
-                MessageBox.Show("통계 전송 실패!");
-            }
-            else
-            {
-                 total.Visibility = Visibility.Visible;
-            }
-
-           
+            App.client.SendMessage("@2211" + "#" + sendPrice);
+            total.Visibility = Visibility.Visible;
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

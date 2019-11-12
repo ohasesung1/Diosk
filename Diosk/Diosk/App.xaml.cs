@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diosk.Core;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Diosk
     /// </summary>
     public partial class App : Application
     {
+        public static serverClient client = new serverClient();
         public static FoodDataSource FoodData = new FoodDataSource();
         public static TableDataSource TableData = new TableDataSource();
         public static Core.Payment payment = new Core.Payment();

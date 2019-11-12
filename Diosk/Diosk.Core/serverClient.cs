@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-//재배포 금지!!
+
 namespace Diosk.Core
 {
     public class serverClient
@@ -21,7 +21,7 @@ namespace Diosk.Core
 
             try
             {
-                workingSocket.Connect("10.80.162.116", 6000);
+                workingSocket.Connect("10.80.163.138", 80);
                 isConnected = true;
             }
             catch (Exception ex)
@@ -32,7 +32,7 @@ namespace Diosk.Core
 
             if(isConnected)
             {
-                ReceiveMessage();
+                workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, SocketFlags.None, ReceiveMessageCallback, null);
                 Console.WriteLine("연결 성공!");
                 return 1;
             }
@@ -43,34 +43,16 @@ namespace Diosk.Core
             }
         }
 
-        public int SendMessage(String message)
+        public void SendMessage(String message)
         {
             try
             {
                 byte[] buffer = Encoding.UTF8.GetBytes(message);
                 workingSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, null, null);
-                ReceiveMessage();
-                Console.WriteLine("전송 성공");
-                return 1;
             }
             catch(Exception ex)
             {
                 Console.WriteLine("메세지 전송중 오류 발생!", ex.Message);
-                return 0;
-            }
-        }
-
-        public void ReceiveMessage()
-        {
-            try
-            {
-                workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, 0, new AsyncCallback(ReceiveMessageCallback), workingSocket);
-                Console.WriteLine(RecvBuffer);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("리시브 에러!", e.ToString());
-                throw e;
             }
         }
 
@@ -81,25 +63,21 @@ namespace Diosk.Core
             try
             {
                 received = workingSocket.EndReceive(ar);
-            }
-            catch
-            {
-                return;
-            }
 
-            if (received > 0)
-            {
-                byte[] recBuf = new byte[received];
-                Array.Copy(RecvBuffer, recBuf, received);
+                if (received > 0)
+                {
+                    byte[] recBuf = new byte[received];
+                    Array.Copy(RecvBuffer, recBuf, received);
 
-                Console.WriteLine("메세지 받음: {0}", Encoding.UTF8.GetString(recBuf));
+                    Console.WriteLine("메세지 받음: {0}", Encoding.UTF8.GetString(recBuf));
+                    workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, SocketFlags.None, ReceiveMessageCallback, null);
+                }
+                else
+                {
+                    Console.WriteLine("서버 연결 끊김");
+                }
             }
-
-            try
-            {
-                workingSocket.BeginReceive(RecvBuffer, 0, RecvBuffer.Length, SocketFlags.None, null, null);
-            }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine("자료 수신 대기 도중 오류 발생! 메세지: {0}", ex.Message);
                 return;

@@ -21,7 +21,6 @@ namespace Diosk
     /// </summary>
     public partial class LoginWindow : UserControl
     {
-        serverClient client = new serverClient();
         public delegate void LoginCompleteHandler(Object sender, OrderArgs args);
         public event LoginCompleteHandler OnLoginComplete;
 
@@ -39,19 +38,25 @@ namespace Diosk
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            int isConneted = client.ConnectServer();
+            int isConneted = App.client.ConnectServer();
             if (isConneted == 0)
             {
                 MessageBox.Show("서버 연결 실패!");
             }
 
             String Id = id.Text;
-            int isSuccess = client.SendMessage(id.Text);
+            App.client.SendMessage(id.Text);
+
+            OnLoginComplete(this, null);
+            id.Text = "";
+            this.Visibility = Visibility.Collapsed;
+#if false
             if(isSuccess == 0)
             {
                 MessageBox.Show("전송 실패!");
             }
-            else if(Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
+            else if
+                (Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
             {
                 OnLoginComplete(this, null);
                 id.Text = "";
@@ -61,6 +66,7 @@ namespace Diosk
             {
                 MessageBox.Show("아이디가 틀렸습니다");
             }
+#endif
         }
     }
 }
