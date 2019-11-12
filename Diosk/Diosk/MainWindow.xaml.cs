@@ -32,6 +32,12 @@ namespace Diosk
             this.Loaded += MainWindow_Loaded;
             order.OnOrderComplete += Order_OnOrderComplete;
             login.OnLoginComplete += SetLoginTime;
+            App.client.serverClosed += Client_serverClosed;
+        }
+
+        private void Client_serverClosed(object sender, ServerArgs args)
+        {
+            MessageBox.Show("asdf");
         }
 
         private void SetLoginTime(object sender, OrderArgs args)

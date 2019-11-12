@@ -8,8 +8,14 @@ using System.Net.Sockets;
 
 namespace Diosk.Core
 {
+    public class ServerArgs : EventArgs
+    {
+    }
     public class serverClient
     {
+        public delegate void ServerClosedHandler(Object sender, ServerArgs args);
+        public event ServerClosedHandler serverClosed;
+
         public Byte[] RecvBuffer = new Byte[100];
         private Socket workingSocket = null;
 
@@ -75,6 +81,7 @@ namespace Diosk.Core
                 else
                 {
                     Console.WriteLine("서버 연결 끊김");
+                    serverClosed(this, null);
                 }
             }
             catch(Exception ex)
