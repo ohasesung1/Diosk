@@ -43,30 +43,15 @@ namespace Diosk
             {
                 MessageBox.Show("서버 연결 실패!");
             }
-
-            String Id = id.Text;
-            App.client.SendMessage(id.Text);
-
-            OnLoginComplete(this, null);
-            id.Text = "";
-            this.Visibility = Visibility.Collapsed;
-#if false
-            if(isSuccess == 0)
+            else
             {
-                MessageBox.Show("전송 실패!");
-            }
-            else if
-                (Id.Equals("@2204") || Id.Equals("@2211") || Id.Equals("@2212"))
-            {
+                String Id = id.Text;
+                App.client.SendMessage(id.Text);
+
                 OnLoginComplete(this, null);
                 id.Text = "";
                 this.Visibility = Visibility.Collapsed;
             }
-            else
-            {
-                MessageBox.Show("아이디가 틀렸습니다");
-            }
-#endif
         }
     }
 }

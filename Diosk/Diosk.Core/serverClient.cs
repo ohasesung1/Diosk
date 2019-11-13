@@ -10,11 +10,12 @@ namespace Diosk.Core
 {
     public class ServerArgs : EventArgs
     {
+        public string Message { get; set; }
     }
     public class serverClient
     {
         public delegate void ServerClosedHandler(Object sender, ServerArgs args);
-        public event ServerClosedHandler serverClosed;
+        public event ServerClosedHandler ServerClosed;
 
         public Byte[] RecvBuffer = new Byte[100];
         private Socket workingSocket = null;
@@ -59,6 +60,11 @@ namespace Diosk.Core
             catch(Exception ex)
             {
                 Console.WriteLine("메세지 전송중 오류 발생!", ex.Message);
+
+                ServerArgs args = new ServerArgs();
+                args.Message = "메세지 전송 오류";
+
+                ServerClosed(this, args);
             }
         }
 
@@ -81,7 +87,10 @@ namespace Diosk.Core
                 else
                 {
                     Console.WriteLine("서버 연결 끊김");
-                    serverClosed(this, null);
+
+                    ServerArgs args = new ServerArgs();
+                    args.Message = "서버 연결 끊음";
+                    ServerClosed(this, args);
                 }
             }
             catch(Exception ex)
