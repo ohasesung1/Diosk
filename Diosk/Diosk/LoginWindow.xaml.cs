@@ -36,7 +36,7 @@ namespace Diosk
             MessageBox.Show("로그아웃하셨습니다.");
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void LoginTodo(object sender, RoutedEventArgs e)
         {
             int isConneted = App.client.ConnectServer();
             if (isConneted == 0)

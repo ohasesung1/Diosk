@@ -26,10 +26,10 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Background="#fefce7">
-            <Button Style="{StaticResource button_style}" x:Name="menu" Margin="10,35,0,0" Content="메뉴" Click="Menu_Click_1" HorizontalAlignment="Left"/>
-            <Button Style="{StaticResource button_style}" x:Name="burger"  Margin="110,35,0,0" Content="버거" Click="Burger_Click" HorizontalAlignment="Left"/>
-            <Button Style="{StaticResource button_style}" x:Name="side"   Margin="210,35,0,0" Content="사이드" Click="Side_Click" HorizontalAlignment="Left"/>
-            <Button Style="{StaticResource button_style}" x:Name="drink" Margin="310,35,0,0" Content="음료" Click="Drink_Click" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="allMenu" Margin="10,35,0,0" Content="메뉴" Click="ViewAllMenu" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="burgerMenu"  Margin="110,35,0,0" Content="버거" Click="ViewBurgerMenu" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="sideMenu"   Margin="210,35,0,0" Content="사이드" Click="ViewSideMenu" HorizontalAlignment="Left"/>
+            <Button Style="{StaticResource button_style}" x:Name="drinkMenu" Margin="310,35,0,0" Content="음료" Click="ViewDrinkMenu" HorizontalAlignment="Left"/>
             <ListView x:Name="paymentList" Background="White" BorderThickness="3" BorderBrush="#F12243" Height="450" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <ListView.View>
                     <GridView>

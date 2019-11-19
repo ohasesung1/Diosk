@@ -28,14 +28,14 @@ namespace Diosk
             InitializeComponent();
         }
 
-        private void Card_Click(object sender, RoutedEventArgs e)
+        private void selectCard(object sender, RoutedEventArgs e)
         {
             App.payment.paymentWay = PaymentWay.Card;
             this.DialogResult = true;
             //this.Hide();
         }
 
-        public void Cash_Click(object sender, RoutedEventArgs e)
+        public void selectCash(object sender, RoutedEventArgs e)
         {
             App.payment.paymentWay = PaymentWay.Cash;
             this.DialogResult = true;

@@ -28,11 +28,6 @@ namespace Diosk
             InitializeComponent();
         }
 
-        public void SetItem(string name, string price)
-        {
-
-        }
-
         public void SetItem(Food item)
         {
             food = item;

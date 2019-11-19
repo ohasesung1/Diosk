@@ -25,14 +25,13 @@ namespace Diosk
     {
         List<Food> salesFoods = new List<Food>();
 
-
         public TotalWindow()
         {
             InitializeComponent();
         }
 
         //총 매출 금액 보여주는 함수
-        public void viewSales(int sellingPrice)
+        public void ViewSales(int sellingPrice)
         {
             totalSalse.Text = sellingPrice + "원";
         }
@@ -44,7 +43,7 @@ namespace Diosk
         }
 
         //결제 된 메뉴 리스트 보여주는 함수
-        public void viewSalesMenu(List<Food> paymentItem)
+        public void ViewSalesMenu(List<Food> paymentItem)
         {
             foreach(Food item in paymentItem)
             {
@@ -55,9 +54,9 @@ namespace Diosk
             paymentList.Items.Refresh();
         }
 
-        private void Menu_Click_1(object sender, RoutedEventArgs e)
+        private void ViewAllMenu(object sender, RoutedEventArgs e)
         {
-            viewSalesMenu(App.payment.FoodList);
+            ViewSalesMenu(App.payment.FoodList);
         }
 
         //카테고리 별로 결제된 메뉴 보여주는 함수
@@ -76,17 +75,17 @@ namespace Diosk
             paymentList.Items.Refresh();
         }
 
-        private void Burger_Click(object sender, RoutedEventArgs e)
+        private void ViewBurgerMenu(object sender, RoutedEventArgs e)
         {
             LoadMenu("Burger");
         }
 
-        private void Side_Click(object sender, RoutedEventArgs e)
+        private void ViewSideMenu(object sender, RoutedEventArgs e)
         {
             LoadMenu("Side");
         }
 
-        private void Drink_Click(object sender, RoutedEventArgs e)
+        private void ViewDrinkMenu(object sender, RoutedEventArgs e)
         {
             LoadMenu("Drink");
         }

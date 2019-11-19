@@ -16,7 +16,7 @@
         <Grid Grid.Row="0">
             <Label x:Name="loginTime" FontSize="14">최근접속시간 표시</Label>
             <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
-            <Button BorderBrush="#f12243" BorderThickness="2" Width="60" Height="30" HorizontalAlignment="Right"  Margin="0,0,15,0" Background="White" Click="LogoutButton_Click">로그아웃</Button>
+            <Button BorderBrush="#f12243" BorderThickness="2" Width="60" Height="30" HorizontalAlignment="Right"  Margin="0,0,15,0" Background="White" Click="LogoutTodo">로그아웃</Button>
             <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
         </Grid>
         <Grid Grid.Row="1">
@@ -32,7 +32,7 @@
         <Grid Grid.Row="2">
             <Border Background="#F12243" Height="8" VerticalAlignment="Top"/>
             <Label x:Name="clock" Content="clock" FontSize="24" Margin="20,20,0,0"/>
-            <Button x:Name="Statistic" Width="150" Height="60" Content="통계" FontSize="30" Background="#F12243" Foreground="White" HorizontalAlignment="Right" Margin="0,0,20,0" BorderThickness="0" Click="Statistic_Click"/>
+            <Button x:Name="Statistic" Width="150" Height="60" Content="통계" FontSize="30" Background="#F12243" Foreground="White" HorizontalAlignment="Right" Margin="0,0,20,0" BorderThickness="0" Click="ViewStatistic"/>
         </Grid>
         <Grid Grid.RowSpan="3">
             <local:LoginWindow x:Name="login" Visibility="Visible"/>

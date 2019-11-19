@@ -61,8 +61,6 @@ namespace Diosk
         // 테이블 로딩과 현재 시간 표시
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("load MainWindow");
-
             DispatcherTimer timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(0.01)
@@ -103,7 +101,6 @@ namespace Diosk
 
             SelectedTablectrl = tableCtrl;
 
-
             order.SetTable(tableCtrl.GetTable());
 
             order.Visibility = Visibility.Visible;
@@ -112,16 +109,16 @@ namespace Diosk
         }
 
         //통계화면으로 이동
-        private void Statistic_Click(object sender, RoutedEventArgs e)
+        private void ViewStatistic(object sender, RoutedEventArgs e)
         {
-            total.viewSales(App.payment.sellingPrice);
-            total.viewSalesMenu(App.payment.FoodList);
+            total.ViewSales(App.payment.sellingPrice);
+            total.ViewSalesMenu(App.payment.FoodList);
             String sendPrice = App.payment.sellingPrice.ToString();
-            App.client.SendMessage("@ALL" + "#" + sendPrice);
+            App.client.SendMessage("@All" + "#" + sendPrice);
             total.Visibility = Visibility.Visible;
         }
 
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        private void LogoutTodo(object sender, RoutedEventArgs e)
         {
             login.SetLogoutTime(this, null);
             App.client.Socket_Close();

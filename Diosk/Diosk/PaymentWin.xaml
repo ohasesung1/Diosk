@@ -31,8 +31,8 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Button Style="{StaticResource button_style}" x:Name="Cash" Click="Cash_Click" HorizontalAlignment="Left" Content="현금" Margin="50, 0, 50, 0"/>
-                <Button Style="{StaticResource button_style}" x:Name="Card" Click="Card_Click" HorizontalAlignment="Right" Content="카드" Margin="50, 0, 50, 0"/>
+                <Button Style="{StaticResource button_style}" x:Name="Cash" Click="selectCash" HorizontalAlignment="Left" Content="현금" Margin="50, 0, 50, 0"/>
+                <Button Style="{StaticResource button_style}" x:Name="Card" Click="selectCard" HorizontalAlignment="Right" Content="카드" Margin="50, 0, 50, 0"/>
             </Grid>
         </Grid>
     </Grid>

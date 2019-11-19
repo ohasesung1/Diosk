@@ -261,7 +261,7 @@ namespace Diosk
             }
         }
 
-        private void PaymentBtn_Click(object sender, RoutedEventArgs e)
+        private void PaymentCheck(object sender, RoutedEventArgs e)
         {
             if (currentTable.FoodList.Count != 0)
             {
@@ -272,7 +272,6 @@ namespace Diosk
                 {
                     PaymentTodo();
                 }
-                
             }
             else
             {
