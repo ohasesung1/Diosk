@@ -24,7 +24,6 @@ namespace Diosk
     public partial class MainWindow : Window
     {
         TableCtrl SelectedTablectrl = null;
-        //serverClient client = new serverClient();
 
         public MainWindow()
         {
@@ -118,13 +117,14 @@ namespace Diosk
             total.viewSales(App.payment.sellingPrice);
             total.viewSalesMenu(App.payment.FoodList);
             String sendPrice = App.payment.sellingPrice.ToString();
-            App.client.SendMessage("@2211" + "#" + sendPrice);
+            App.client.SendMessage("@ALL" + "#" + sendPrice);
             total.Visibility = Visibility.Visible;
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             login.SetLogoutTime(this, null);
+            App.client.Socket_Close();
             login.Visibility = Visibility.Visible;
         }
     }

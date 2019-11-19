@@ -99,5 +99,10 @@ namespace Diosk.Core
                 return;
             }
         }
+
+        public void Socket_Close()
+        {
+            workingSocket.Close();
+        }
     }
 }

@@ -148,7 +148,7 @@ namespace Diosk
             food.Category = item.Category;
 
             return food;
-        }
+        }        
 
         //테이블의 값을 세팅해주는 함수.
         private void SettingTable()
@@ -238,9 +238,10 @@ namespace Diosk
         {
             if ((MessageBox.Show("결제 방식: " + App.payment.paymentWay + "\n총금액: " + currentTable.TotalPrice + "\n결제 하시겠습니까?", "확인", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
             {
-                App.payment.sellingPrice += currentTable.TotalPrice;
                 String currentTablePrice = currentTable.TotalPrice.ToString();
                 App.client.SendMessage("@2211" + "#" + currentTablePrice);
+
+                App.payment.sellingPrice += currentTable.TotalPrice;
 
                 foreach (Food item in currentTable.FoodList)
                 {
