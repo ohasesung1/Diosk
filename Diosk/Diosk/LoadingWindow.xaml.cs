@@ -37,7 +37,6 @@ namespace Diosk
             App.TableData.Load();
             App.FoodData.Load();
 
-
             this.Visibility = Visibility.Hidden;
             MainWindow main = new MainWindow();
             main.ShowDialog();

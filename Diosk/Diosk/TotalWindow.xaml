@@ -35,7 +35,7 @@
                     <GridView>
                         <GridViewColumn Header="메뉴" DisplayMemberBinding="{Binding Name }" Width="150"/>
                         <GridViewColumn Header="수량" DisplayMemberBinding="{Binding Count}" Width="50"/>
-                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding totalPrice}" Width="240"/>
+                        <GridViewColumn Header="금액" DisplayMemberBinding="{Binding TotalPrice}" Width="240"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -51,8 +51,7 @@
         <Grid Grid.Row="0" Background="White">
             <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
             <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
-            <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"></Button>
-
+            <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"/>
         </Grid>
     </Grid>
 </UserControl>

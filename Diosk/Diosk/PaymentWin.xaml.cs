@@ -32,14 +32,12 @@ namespace Diosk
         {
             App.payment.paymentWay = PaymentWay.Card;
             this.DialogResult = true;
-            //this.Hide();
         }
 
         public void selectCash(object sender, RoutedEventArgs e)
         {
             App.payment.paymentWay = PaymentWay.Cash;
             this.DialogResult = true;
-            //this.Hide();
         }
     }
 }

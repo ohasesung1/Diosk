@@ -45,11 +45,9 @@ namespace Diosk
             }
             else
             {
-                //String Id = id.Text;
                 App.client.SendMessage("@2211");
 
                 OnLoginComplete(this, null);
-                //id.Text = "";
                 this.Visibility = Visibility.Collapsed;
             }
         }

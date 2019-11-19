@@ -12,7 +12,7 @@ namespace Diosk.Core
     {
         public string Message { get; set; }
     }
-    public class serverClient
+    public class Client
     {
         public delegate void ServerClosedHandler(Object sender, ServerArgs args);
         public event ServerClosedHandler ServerClosed;

@@ -46,7 +46,7 @@
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentWay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="serverClient.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Table.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

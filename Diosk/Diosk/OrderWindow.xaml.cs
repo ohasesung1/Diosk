@@ -30,8 +30,6 @@ namespace Diosk
     {
         public delegate void OrderCompleteHandler(Object sender, OrderArgs args);
         public event OrderCompleteHandler OnOrderComplete;
-        //serverClient client = new serverClient();
-       
 
         private Core.Table currentTable;
 

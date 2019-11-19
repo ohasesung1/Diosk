@@ -47,7 +47,7 @@ namespace Diosk
         {
             foreach(Food item in paymentItem)
             {
-                item.totalPrice = item.Price * item.Count;
+                item.TotalPrice = item.Price * item.Count;
             }
 
             paymentList.ItemsSource = paymentItem;

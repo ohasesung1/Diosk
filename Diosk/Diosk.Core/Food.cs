@@ -12,7 +12,7 @@ namespace Diosk.Core
 
         public int Price { get; set; }
 
-        public int totalPrice { get; set; }
+        public int TotalPrice { get; set; }
 
         private int count;
         public int Count {
@@ -48,5 +48,4 @@ namespace Diosk.Core
             this.Category = category;
         }
     }
-
 }
