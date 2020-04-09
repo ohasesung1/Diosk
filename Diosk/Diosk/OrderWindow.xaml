@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Diosk.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diosk"
+        mc:Ignorable="d"
+        d:DesignHeight="800" d:DesignWidth="450">
+    <UserControl.Resources>
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <Style x:Key="ListViewHeader" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed"></Setter>
+        </Style>
+        <Style x:Key="doubleClick" TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="AddOrderMenu"></EventSetter>
+        </Style>
+        <Style x:Key="CategoryButton" TargetType="Button">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#F12243"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="OrderButton" TargetType="Button">
+            <Setter Property="Background" Value="#F12243"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Image Source="/Image/logo.jpeg" Margin="0,0,0,10"/>
+            <Border Background="#f12243" Height="8" VerticalAlignment="Bottom"/>
+            <Button Height="30" Width="70" Click="BackToMainWindow" Content="/ 메인화면" Foreground="Gray" FontWeight="Bold" HorizontalAlignment="Left" Background="White" Margin="0,0,0,5"></Button>
+        </Grid>
+        <Grid Grid.Row="1" Background="#fefce7">
+            <Button Content="전체" Click="AllButton" Margin="20,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="버거" Click="BurgerButton" Margin="120,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="사이드" Click="SideButton" Margin="220,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <Button Content="음료" Click="DrinkButton" Margin="320,10,0,0" Style="{StaticResource CategoryButton}"/>
+            <ListView ItemContainerStyle="{StaticResource doubleClick}" BorderThickness="3" BorderBrush="#F12243" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="20,45,20,0">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" ItemHeight="120" ItemWidth="120"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Image MouseLeftButtonDown="FoodImgPreview" Source="{Binding ImagePath}" Stretch="UniformToFill"></Image>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource TitleStyle}" TextTrimming="CharacterEllipsis"></TextBlock>
+                                <TextBlock VerticalAlignment="Bottom" Text="{Binding Price}" Style="{StaticResource TitleStyle}" ></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#fefce7">
+            <ListView BorderBrush="#F12243" BorderThickness="3" x:Name="lvOrder" Height="200" Width="230"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" VerticalAlignment="top" Margin="20,10,0,0">
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource ListViewHeader}">
+                        <GridViewColumn Width="110" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+
+                        <GridViewColumn Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="20" Height="20" Content="-" Click="SubtractOrderCount"></Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="25" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+
+                        <GridViewColumn Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="20" Height="20" Content="+" Click="AddOrderCount"></Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel>
+                <Border BorderThickness="2" BorderBrush="#F12243" Height="150" Width="150" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,20,0">
+                    <Image x:Name="selectFoodImg" Stretch="UniformToFill"></Image>
+                </Border>
+                <WrapPanel HorizontalAlignment="Right" Margin="0,10,20,0">
+                    <Button Click="OrderCancel" Content="취소" Width="60" Height="35" Margin="0,0,10,0" FontSize="16" Style="{StaticResource OrderButton}"></Button>
+                    <Button Click="CheckCancel" Content="전체 취소" Width="80" Height="35" FontSize="16" Style="{StaticResource OrderButton}"></Button>
+                </WrapPanel>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Border BorderThickness="3" BorderBrush="#F12243" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="230" Margin="20,0,0,5" Background="White">
+                <TextBlock x:Name="TbTotalPrice" Text="총계 : " FontSize="25" VerticalAlignment="Center"></TextBlock>
+            </Border>
+            <Button x:Name="PaymentBtn" Content="결제" Width="150" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,5" FontSize="28" Style="{StaticResource OrderButton}" Click="PaymentCheck"></Button>
+        </Grid>
+    </Grid>
+</UserControl>
